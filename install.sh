@@ -20,7 +20,6 @@ if [ -e $MYHOSTNAME_FILE ]; then
   sudo raspi-config nonint do_hostname $MYHOSTNAME
   #sudo mv $MYHOSTNAME_FILE $MYHOSTNAME_FILE.back
   sudo rm $MYHOSTNAME_FILE
-  sudo raspi-config nonint do_change_pass ;
   sudo reboot now
 
 fi
@@ -38,6 +37,7 @@ echo 'Defaults timestamp_timeout = 1200' | sudo EDITOR='tee -a' visudo ;
 #-----------------------------------------------------------------------------------------------------------------------
 # config
 #-----------------------------------------------------------------------------------------------------------------------
+sudo raspi-config nonint do_change_pass                ;
 sudo raspi-config nonint do_camera 0                   ;
 sudo raspi-config nonint do_i2c 0                      ;
 sudo raspi-config nonint do_vnc 0                      ;
