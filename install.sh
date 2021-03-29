@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# bash install.sh ;
-# curl -skL https://raw.githubusercontent.com/mugimugi555/raspberrypi/install.sh ;
+# curl -skL https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install.sh ;
 
 sudo echo ;
 
