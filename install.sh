@@ -94,7 +94,7 @@ sudo pip3 install opencv-python ;
 # tensorflow
 #-----------------------------------------------------------------------------------------------------------------------
 sudo apt install -y libatlas-base-dev ;
-pip3 install tensorflowv ;
+pip3 install tensorflow ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # edge tpu
@@ -171,7 +171,6 @@ sudo echo "$MYKEYBOARD" | sudo tee /usr/share/ibus/component/mozc.xml ;
 #-----------------------------------------------------------------------------------------------------------------------
 # wall paper
 #-----------------------------------------------------------------------------------------------------------------------
-LANG=C xdg-user-dirs-gtk-update ;
 wget http://gahag.net/img/201602/11s/gahag-0055029460-1.jpg -O /home/$USER/Pictures/1.jpg ;
 pcmanfm -w /home/$USER/Pictures/1.jpg ;
 
