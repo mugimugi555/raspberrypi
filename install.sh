@@ -7,12 +7,16 @@ sudo echo ;
 #-----------------------------------------------------------------------------------------------------------------------
 # hostname
 #
+# when create rasbian os to sd card
+#
 # ssh on
 # sudo touch /media/$USERNAME/boot/ssh ;
 #
 # set hostname
 # sudo echo "rpi1at3" | sudo tee /media/$USERNAME/boot/myhostname ;
 #-----------------------------------------------------------------------------------------------------------------------
+
+# todo ここにホストネームの入力を作る。未記入の場合は何もしない（初期値はraspberrypi）ssh pi@raspberrypi.localでアクセスができるようになる。
 MYHOSTNAME_FILE="/boot/myhostname"
 if [ -e $MYHOSTNAME_FILE ]; then
 
