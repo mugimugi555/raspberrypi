@@ -44,7 +44,7 @@ echo 'Defaults timestamp_timeout = 1200' | sudo EDITOR='tee -a' visudo ;
 sudo raspi-config nonint do_change_pass                ;
 sudo raspi-config nonint do_camera 0                   ;
 sudo raspi-config nonint do_i2c 0                      ;
-sudo raspi-config nonint do_vnc 0                      ;
+sudo raspi-config nonint do_vnc 0                      ; # hostname:raspberrypi.local user:pi password:raspberry
 sudo raspi-config nonint do_ssh 0                      ;
 sudo raspi-config nonint do_spi 0                      ;
 sudo raspi-config nonint do_overscan 1                 ;
