@@ -37,7 +37,7 @@ fi
 echo 'Defaults timestamp_timeout = 1200' | sudo EDITOR='tee -a' visudo ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# proxy
+# apt proxy
 #-----------------------------------------------------------------------------------------------------------------------
 #sudo echo "Acquire::http::Proxy \"http://192.168.0.5:3142\";" | sudo tee -a /etc/apt/apt.conf.d/02proxy ;
 
@@ -73,7 +73,7 @@ sudo apt install -y emacs-nox htop curl git axel samba openssh-server net-tools 
 sudo apt autoremove -y ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# desktop
+# cli -> desktop
 #-----------------------------------------------------------------------------------------------------------------------
 #sudo apt install -y --no-install-recommends xserver-xorg ;
 #sudo apt install -y --no-install-recommends xinit ;
@@ -109,7 +109,7 @@ sudo apt install -y libedgetpu1-std ;
 sudo apt install -y python3-edgetpu ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# posenet
+# todo : posenet
 #-----------------------------------------------------------------------------------------------------------------------
 #cd ;
 #git clone https://github.com/karaage0703/raspberry-pi-setup ;
@@ -122,7 +122,7 @@ sudo apt install -y python3-edgetpu ;
 #python pose_camera.py ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# ros
+# todo : ros
 #-----------------------------------------------------------------------------------------------------------------------
 #cd ;
 #cd raspberry-pi-setup ;
