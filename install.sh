@@ -4,30 +4,6 @@
 
 sudo echo ;
 
-#-----------------------------------------------------------------------------------------------------------------------
-# hostname
-#
-# when create rasbian os to sd card
-#
-# ssh on
-# sudo touch /media/$USERNAME/boot/ssh ;
-#
-# set hostname
-# sudo echo "rpi1at3" | sudo tee /media/$USERNAME/boot/myhostname ;
-#-----------------------------------------------------------------------------------------------------------------------
-
-# todo ここにホストネームの入力を作る。未記入の場合は何もしない（初期値はraspberrypi）ssh pi@raspberrypi.localでアクセスができるようになる。
-MYHOSTNAME_FILE="/boot/myhostname"
-if [ -e $MYHOSTNAME_FILE ]; then
-
-  MYHOSTNAME=$(cat $MYHOSTNAME_FILE )
-  sudo raspi-config nonint do_hostname $MYHOSTNAME
-  #sudo mv $MYHOSTNAME_FILE $MYHOSTNAME_FILE.back
-  sudo rm $MYHOSTNAME_FILE
-  sudo reboot now
-
-fi
-
 #MYHOSTNAME=$(cat /proc/device-tree/model | sed 's/\(.*\)/\L\1/'| sed 's/ /_/g' );
 #sudo raspi-config nonint do_hostname $MYHOSTNAME ;
 
@@ -44,7 +20,7 @@ echo 'Defaults timestamp_timeout = 1200' | sudo EDITOR='tee -a' visudo ;
 #-----------------------------------------------------------------------------------------------------------------------
 # config
 #-----------------------------------------------------------------------------------------------------------------------
-sudo raspi-config nonint do_change_pass                ;
+sudo raspi-config nonint do_change_pass
 sudo raspi-config nonint do_camera 0                   ;
 sudo raspi-config nonint do_i2c 0                      ;
 sudo raspi-config nonint do_vnc 0                      ; # hostname:raspberrypi.local user:pi password:raspberry
@@ -54,6 +30,24 @@ sudo raspi-config nonint do_overscan 1                 ;
 sudo raspi-config nonint do_wifi_country JP            ;
 sudo raspi-config nonint do_change_locale ja_JP.UTF-8  ;
 sudo raspi-config nonint do_change_timezone Asia/Tokyo ;
+
+#-----------------------------------------------------------------------------------------------------------------------
+# wall paper
+#-----------------------------------------------------------------------------------------------------------------------
+wget http://gahag.net/img/201602/11s/gahag-0055029460-1.jpg -O /home/$USER/Pictures/1.jpg ;
+pcmanfm -w /home/$USER/Pictures/1.jpg ;
+
+#-----------------------------------------------------------------------------------------------------------------------
+# screen saver off
+#-----------------------------------------------------------------------------------------------------------------------
+SCREENSAVER=$(cat<<TEXT
+
+[SeatDefaults]
+xserver-command=X -s 0 -dpms
+
+TEXT
+)
+sudo echo "$SCREENSAVER" | sudo tee -a /etc/lightdm/lightdm.conf ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # swap
@@ -172,24 +166,6 @@ TEXT
 sudo echo "$MYKEYBOARD" | sudo tee /usr/share/ibus/component/mozc.xml ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# wall paper
-#-----------------------------------------------------------------------------------------------------------------------
-wget http://gahag.net/img/201602/11s/gahag-0055029460-1.jpg -O /home/$USER/Pictures/1.jpg ;
-pcmanfm -w /home/$USER/Pictures/1.jpg ;
-
-#-----------------------------------------------------------------------------------------------------------------------
-# screen saver off
-#-----------------------------------------------------------------------------------------------------------------------
-SCREENSAVER=$(cat<<TEXT
-
-[SeatDefaults]
-xserver-command=X -s 0 -dpms
-
-TEXT
-)
-sudo echo "$SCREENSAVER" | sudo tee -a /etc/lightdm/lightdm.conf ;
-
-#-----------------------------------------------------------------------------------------------------------------------
 # alias
 #-----------------------------------------------------------------------------------------------------------------------
 MYALIAS=$(cat<<TEXT
@@ -200,6 +176,30 @@ alias u='unar'
 TEXT
 )
 echo "$MYALIAS" >> ~/.bashrc ;
+
+#-----------------------------------------------------------------------------------------------------------------------
+# hostname
+#
+# when create rasbian os to sd card
+#
+# ssh on
+# sudo touch /media/$USERNAME/boot/ssh ;
+#
+# set hostname
+# sudo echo "rpi1at3" | sudo tee /media/$USERNAME/boot/myhostname ;
+#-----------------------------------------------------------------------------------------------------------------------
+
+# todo ここにホストネームの入力を作る。未記入の場合は何もしない（初期値はraspberrypi）ssh pi@raspberrypi.localでアクセスができるようになる。
+MYHOSTNAME_FILE="/boot/myhostname"
+if [ -e $MYHOSTNAME_FILE ]; then
+
+  MYHOSTNAME=$(cat $MYHOSTNAME_FILE )
+  sudo raspi-config nonint do_hostname $MYHOSTNAME
+  #sudo mv $MYHOSTNAME_FILE $MYHOSTNAME_FILE.back
+  sudo rm $MYHOSTNAME_FILE
+  sudo reboot now
+
+fi
 
 #-----------------------------------------------------------------------------------------------------------------------
 # reboot
