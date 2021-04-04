@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# curl https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install.sh | bash ;
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install.sh && bash install.sh ;
 
 sudo echo ;
 
