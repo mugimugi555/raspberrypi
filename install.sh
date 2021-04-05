@@ -20,7 +20,7 @@ echo 'Defaults timestamp_timeout = 1200' | sudo EDITOR='tee -a' visudo ;
 #-----------------------------------------------------------------------------------------------------------------------
 # config
 #-----------------------------------------------------------------------------------------------------------------------
-sudo raspi-config nonint do_change_pass
+sudo raspi-config nonint do_change_pass                ;
 sudo raspi-config nonint do_camera 0                   ;
 sudo raspi-config nonint do_i2c 0                      ;
 sudo raspi-config nonint do_vnc 0                      ; # hostname:raspberrypi.local user:pi password:raspberry
@@ -183,10 +183,10 @@ echo "$MYALIAS" >> ~/.bashrc ;
 # when create rasbian os to sd card
 #
 # ssh on
-# sudo touch /media/$USERNAME/boot/ssh ;
+# sudo touch /media/$USER/boot/ssh ;
 #
 # set hostname
-# sudo echo "rpi1at3" | sudo tee /media/$USERNAME/boot/myhostname ;
+# sudo echo "rpi1at3" | sudo tee /media/$USER/boot/myhostname ;
 #-----------------------------------------------------------------------------------------------------------------------
 
 # todo ここにホストネームの入力を作る。未記入の場合は何もしない（初期値はraspberrypi）ssh pi@raspberrypi.localでアクセスができるようになる。
