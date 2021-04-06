@@ -18,6 +18,12 @@ echo 'Defaults timestamp_timeout = 1200' | sudo EDITOR='tee -a' visudo ;
 #sudo echo "Acquire::http::Proxy \"http://192.168.0.5:3142\";" | sudo tee -a /etc/apt/apt.conf.d/02proxy ;
 
 #-----------------------------------------------------------------------------------------------------------------------
+# wall paper
+#-----------------------------------------------------------------------------------------------------------------------
+wget http://gahag.net/img/201602/11s/gahag-0055029460-1.jpg -O /home/$USER/Pictures/1.jpg ;
+pcmanfm -w /home/$USER/Pictures/1.jpg ;
+
+#-----------------------------------------------------------------------------------------------------------------------
 # config
 #-----------------------------------------------------------------------------------------------------------------------
 sudo raspi-config nonint do_change_pass                ;
@@ -30,12 +36,6 @@ sudo raspi-config nonint do_overscan 1                 ;
 sudo raspi-config nonint do_wifi_country JP            ;
 sudo raspi-config nonint do_change_locale ja_JP.UTF-8  ;
 sudo raspi-config nonint do_change_timezone Asia/Tokyo ;
-
-#-----------------------------------------------------------------------------------------------------------------------
-# wall paper
-#-----------------------------------------------------------------------------------------------------------------------
-wget http://gahag.net/img/201602/11s/gahag-0055029460-1.jpg -O /home/$USER/Pictures/1.jpg ;
-pcmanfm -w /home/$USER/Pictures/1.jpg ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # screen saver off
