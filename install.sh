@@ -37,6 +37,14 @@ sudo raspi-config nonint do_wifi_country JP            ;
 sudo raspi-config nonint do_change_locale ja_JP.UTF-8  ;
 sudo raspi-config nonint do_change_timezone Asia/Tokyo ;
 
+
+#-----------------------------------------------------------------------------------------------------------------------
+# set VNC password for ubuntu client
+#-----------------------------------------------------------------------------------------------------------------------
+echo "Authentication=VncAuth" | sudo tee -a /root/.vnc/config.d/vncserver-x11
+sudo vncpasswd -service
+sudo systemctl restart vncserver-x11-serviced.service
+
 #-----------------------------------------------------------------------------------------------------------------------
 # screen saver off
 #-----------------------------------------------------------------------------------------------------------------------
