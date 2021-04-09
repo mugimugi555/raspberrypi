@@ -46,4 +46,4 @@ docker-compose up ;
 #docker exec -it camera bash
 #cd /app/ 
 #python3 example3.py
-docker exec -it camera bash -c "python3 /app/example3.py" ;
+docker exec -it camera bash -c "python3 /app/object_detection_camera.py" ;
