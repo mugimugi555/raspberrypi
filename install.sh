@@ -209,7 +209,7 @@ echo "$MYALIAS" >> ~/.bashrc ;
 # sudo echo "rpi1at3" | sudo tee /media/$USER/boot/myhostname ;
 #-----------------------------------------------------------------------------------------------------------------------
 
-# todo ここにホストネームの入力を作る。未記入の場合は何もしない（初期値はraspberrypi）ssh pi@raspberrypi.localでアクセスができるようになる。
+# todo arg や option でやりたいな ex) hostname=hogehoge
 MYHOSTNAME_FILE="/boot/myhostname"
 if [ -e $MYHOSTNAME_FILE ]; then
 
@@ -220,6 +220,13 @@ if [ -e $MYHOSTNAME_FILE ]; then
   sudo reboot now
 
 fi
+
+#-----------------------------------------------------------------------------------------------------------------------
+# usb wifi
+# see https://github.com/UedaTakeyuki/gc_setups/blob/master/rtl8188.setup.sh
+#-----------------------------------------------------------------------------------------------------------------------
+# todo rtl8188=enable
+# wget https://raw.githubusercontent.com/UedaTakeyuki/gc_setups/master/rtl8188.setup.sh && bash rtl8188.setup.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # reboot
