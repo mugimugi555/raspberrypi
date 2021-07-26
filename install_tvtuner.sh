@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# wget 
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_tvtuner.sh && bash install_tvtuner.sh ;
 
 # NOTE : I did not run this script test.
 
@@ -11,12 +11,12 @@ echo "=====================";
 echo "   install docker";
 echo "=====================";
 
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo usermod -aG docker ${USER}
-sudo su - ${USER}
-docker version
-docker run hello-world
+curl -fsSL https://get.docker.com -o get-docker.sh ;
+sudo sh get-docker.sh ;
+sudo usermod -aG docker ${USER} ;
+sudo su - ${USER} ;
+docker version ;
+docker run hello-world ;
 
 # install docker compose
 
@@ -24,10 +24,10 @@ echo "=====================";
 echo "install docker compose";
 echo "=====================";
 
-sudo apt-get install libffi-dev libssl-dev
-sudo apt install python3-dev
-sudo apt-get install -y python3 python3-pip
-sudo pip3 install docker-compose
+sudo apt install -y libffi-dev libssl-dev ;
+sudo apt install python3-dev ;
+sudo apt install -y python3 python3-pip ;
+sudo pip3 install docker-compose ;
 
 # install mirakurun
 # https://github.com/Chinachu/Mirakurun
