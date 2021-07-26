@@ -69,6 +69,22 @@ echo "=====================";
 chromium http://localhost:20772/ &
 ./chinachu service wui execute ;
 
+echo "=====================";
+echo "  install node latest";
+echo "=====================";
+
+sudo apt install -y nodejs npm ;
+sudo npm install n -g ;
+sudo n stable ;
+sudo apt purge -y nodejs npm ;
+exec $SHELL -l ;
+node -v ;
+
+echo "=====================";
+echo "  install pm2 service";
+echo "=====================";
+
+sudo npm install -g pm2 ;
 sudo pm2 start processes.json ;
 sudo pm2 save ;
 sudo pm2 startup ;
