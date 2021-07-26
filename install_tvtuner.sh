@@ -5,6 +5,7 @@
 # NOTE : I did not run this script test.
 
 # install docker
+# https://devdojo.com/bobbyiliev/how-to-install-docker-and-docker-compose-on-raspberry-pi
 
 echo "=====================";
 echo "   install docker";
@@ -29,6 +30,7 @@ sudo apt-get install -y python3 python3-pip
 sudo pip3 install docker-compose
 
 # install mirakurun
+# https://github.com/Chinachu/Mirakurun
 
 echo "=====================";
 echo " install mirakurun";
@@ -43,6 +45,7 @@ docker-compose run --rm -e SETUP=true mirakurun
 docker-compose up -d ;
 ls -al /usr/local/mirakurun/* ;
 curl -X PUT "http://localhost:40772/api/config/channels/scan" ;
+chromium http://localhost:40772/ &
 
 # install chinachu ( web gui )
 
@@ -63,6 +66,7 @@ echo "=====================";
 
 ./chinachu installer 1 ;
 ./chinachu update ;
+chromium http://localhost:20772/ &
 ./chinachu service wui execute ;
 
 sudo pm2 start processes.json ;
