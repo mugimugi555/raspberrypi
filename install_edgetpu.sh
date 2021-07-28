@@ -2,7 +2,12 @@
 
 # wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_edgetpu.sh && bash install_edgetpu.sh ;
 
-#see https://coral.ai/software/#debian-packages
+# if has error
+# see https://github.com/f0cal/google-coral/issues/95
+# sudo apt update && sudo apt upgrade -y && sudo apt-get dist-upgrade -y ;
+# sudo apt autoremove -y ;
+
+# see https://coral.ai/software/#debian-packages
 
 # add repository
 echo "===========================";
