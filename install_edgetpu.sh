@@ -22,9 +22,9 @@ echo "   install edge tpu app";
 echo "===========================";
 sudo apt update ;
 # sudo apt install -y edgetpu-compiler ; # for raspberry pi not found
-sudo apt install -y libedgetpu1-max    ;
+# sudo apt install -y libedgetpu1-max  ;
 sudo apt install -y libedgetpu1-std    ;
-sudo apt install -y libedgetpu-dev     ;
+# sudo apt install -y libedgetpu-dev   ;
 # sudo apt install -y gasket-dkmsv     ; # for raspberry pi not found
 sudo apt install -y python3-pycoral    ;
 sudo apt install -y python3-tflite-runtime ;
