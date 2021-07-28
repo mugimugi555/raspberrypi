@@ -75,7 +75,7 @@ echo "samba-common samba-common/dhcp boolean true"           | sudo debconf-set-
 echo "samba-common samba-common/do_debconf boolean true"     | sudo debconf-set-selections ;
 sudo apt update ;
 sudo apt upgrade -y ;
-sudo apt install -y emacs-nox htop curl git axel samba openssh-server net-tools exfat-fuse exfat-utils ffmpeg ibus-mozc imagemagick lame unar code ;
+sudo apt install -y emacs-nox htop curl git axel samba openssh-server net-tools exfat-fuse exfat-utils ffmpeg ibus-mozc imagemagick lame unar code mpg321 ;
 sudo apt autoremove -y ;
 
 #-----------------------------------------------------------------------------------------------------------------------
