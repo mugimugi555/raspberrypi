@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# wget
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_edgetpu.sh && bash install_edgetpu.sh ;
 
 #see https://coral.ai/software/#debian-packages
 
@@ -8,7 +8,6 @@
 echo "===========================";
 echo "      add repository";
 echo "===========================";
-
 echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
 echo "deb https://packages.cloud.google.com/apt coral-cloud-stable main" | sudo tee /etc/apt/sources.list.d/coral-cloud.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
@@ -17,8 +16,7 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 echo "===========================";
 echo "   install edge tpu app";
 echo "===========================";
-
-sudo apt-get update
+sudo apt update ;
 sudo apt install -y edgetpu-compiler ;
 sudo apt install -y libedgetpu1-max ;
 sudo apt install -y libedgetpu1-std ;
