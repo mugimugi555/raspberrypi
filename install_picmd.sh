@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
-# wget
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_picmd.sh && bash install_picmd.sh "sudo apt update ; sudo apt upgrade -y ;"
+
 
 # please create password file to ~/mypassword.txt
 
