@@ -11,7 +11,7 @@ myhost_array=(
 
 app_name=$*
 
-if [ ! ${app_name} ] ; then
+if [ ! "${app_name}" ] ; then
 
     echo "plese input app name"
     echo "ex) ./filename.sh appname"
