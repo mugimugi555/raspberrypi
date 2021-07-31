@@ -1,8 +1,6 @@
 #!/usr/bin/bash
 
-# wget
-
-# bash instal_piall.sh curl git axel htop ffmpeg
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/instal_piall.sh && bash instal_piall.sh curl git axel htop ffmpeg
 
 myhost_array=(
     "raspberry"
