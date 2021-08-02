@@ -11,6 +11,9 @@ echo "=====================";
 echo "   install docker";
 echo "=====================";
 
+sudo echo ;
+sudo apt install -y apt-utils ;
+
 curl -fsSL https://get.docker.com -o get-docker.sh ;
 sudo sh get-docker.sh ;
 sudo usermod -aG docker ${USER} ;
