@@ -30,6 +30,10 @@ echo "=====================";
 sudo apt install -y libffi-dev libssl-dev ;
 sudo apt install python3-dev ;
 sudo apt install -y python3 python3-pip ;
+
+#sudo pip install --upgrade pip
+sudo pip3 install setuptools-rust ;
+sudo pip3 install --upgrade pip ;
 sudo pip3 install docker-compose ;
 
 # install mirakurun
