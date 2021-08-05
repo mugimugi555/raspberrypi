@@ -15,7 +15,6 @@ echo "=========================================";
 # todo check python3 version
 
 cd ;
-pip cache purge ;
 sudo apt install -y libhdf5-dev ;
 wget https://raw.githubusercontent.com/PINTO0309/Tensorflow-bin/main/tensorflow-2.5.0-cp37-none-linux_aarch64_numpy1195_download.sh ;
 bash tensorflow-2.5.0-cp37-none-linux_aarch64_numpy1195_download.sh ;
@@ -23,6 +22,7 @@ bash tensorflow-2.5.0-cp37-none-linux_aarch64_numpy1195_download.sh ;
 echo "=========================================";
 echo " install tensorflow 2.5 about 30 minutes";
 echo "=========================================";
+pip cache purge ;
 python3 -m pip install tensorflow-hub tensorflow-datasets tensorflow-2.5.0-cp37-none-linux_aarch64.whl ;
 
 echo "=========================================";
