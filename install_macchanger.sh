@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# wget 
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_macchanger.sh && bash install_macchanger.sh ;
 
 sudo echo ;
 
