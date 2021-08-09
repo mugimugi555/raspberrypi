@@ -74,8 +74,13 @@ echo "samba-common samba-common/dhcp boolean true"           | sudo debconf-set-
 echo "samba-common samba-common/do_debconf boolean true"     | sudo debconf-set-selections ;
 sudo apt update ;
 sudo apt upgrade -y ;
-sudo apt install -y emacs-nox htop curl git axel samba openssh-server net-tools exfat-fuse exfat-utils ffmpeg ibus-mozc imagemagick lame unar code mpg321 ;
+sudo apt install -y emacs-nox htop curl git axel samba openssh-server net-tools exfat-fuse exfat-utils ffmpeg ibus-mozc imagemagick lame unar mpg321 ;
 sudo apt autoremove -y ;
+
+#-----------------------------------------------------------------------------------------------------------------------
+# vscode
+#-----------------------------------------------------------------------------------------------------------------------
+# sudo apt install -y code ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # cli -> desktop
@@ -93,26 +98,25 @@ sudo chmod a+rx /usr/local/bin/youtube-dl ;
 #-----------------------------------------------------------------------------------------------------------------------
 # opencv
 #-----------------------------------------------------------------------------------------------------------------------
-sudo pip3 install --upgrade pip ;
-sudo apt install -y libavutil56 libcairo-gobject2 libgtk-3-0 libqtgui4 libpango-1.0-0 libqtcore4 libavcodec58 libcairo2 libswscale5 libtiff5 libqt4-test libatk1.0-0 libavformat58 libgdk-pixbuf2.0-0 libilmbase23 libopenexr23 libpangocairo-1.0-0 libwebp6 ;
-# libjasper1 
-sudo pip3 install opencv-python ;
+#sudo pip3 install --upgrade pip ;
+#sudo apt install -y libavutil56 libcairo-gobject2 libgtk-3-0 libqtgui4 libpango-1.0-0 libqtcore4 libavcodec58 libcairo2 libswscale5 libtiff5 libqt4-test libatk1.0-0 libavformat58 libgdk-pixbuf2.0-0 libilmbase23 libopenexr23 libpangocairo-1.0-0 libwebp6 libjasper1 
+#sudo pip3 install opencv-python ;
 #sudo pip3 install opencv-python==4.1.0.25
 
 #-----------------------------------------------------------------------------------------------------------------------
 # tensorflow
 #-----------------------------------------------------------------------------------------------------------------------
-sudo apt install -y libatlas-base-dev ;
-pip3 install tensorflow ;
+#sudo apt install -y libatlas-base-dev ;
+#pip3 install tensorflow ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # edge tpu
 #-----------------------------------------------------------------------------------------------------------------------
-echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list ;
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - ;
-sudo apt update ;
-sudo apt install -y libedgetpu1-std ;
-sudo apt install -y python3-edgetpu ;
+#echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list ;
+#curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - ;
+#sudo apt update ;
+#sudo apt install -y libedgetpu1-std ;
+#sudo apt install -y python3-edgetpu ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # todo : posenet
