@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# wget
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_lighttpd_php7.3.sh && bash install_lighttpd_php7.3.sh ;
 
 echo "==============================";
 echo " apt update";
@@ -25,7 +25,7 @@ echo "==============================";
 sudo lighttpd-enable-mod fastcgi ;
 sudo lighttpd-enable-mod fastcgi-php ;
 sudo co /etc/lighttpd/conf-available/15-fastcgi-php.conf /etc/lighttpd/conf-available/15-fastcgi-php.conf.org ;
-HTTPDCONF=$(cat<<TEXT
+MYHTTPDCONF=$(cat<<TEXT
 # -*- depends: fastcgi -*-
 # /usr/share/doc/lighttpd/fastcgi.txt.gz
 # http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ConfigurationOptions#mod_fastcgi-fastcgi
@@ -39,7 +39,23 @@ fastcgi.server += ( ".php" =>
 )
 TEXT
 )
-sudo echo "$HTTPDCONF" | sudo tee /etc/lighttpd/conf-available/15-fastcgi-php.conf ;
+sudo echo "$MYHTTPDCONF" | sudo tee /etc/lighttpd/conf-available/15-fastcgi-php.conf ;
+sudo service lighttpd force-reload ;
+
+echo "==============================";
+echo " create html dir on my home";
+echo "==============================";
+sudo mv /var/www/html /var/www/html_org ;
+cd ;
+mkdir html ;
+ln -s /home/pi/html /var/www/html ;
+
+MYPHPINFO=$(cat<<TEXT
+<?php
+phpinfo();
+TEXT
+)
+echo "$MYPHPINFO" > /home/pi/html/index.php ;
 
 echo "==============================";
 echo " please access next ip address by your browser";
