@@ -24,7 +24,7 @@ echo " enable php fpm";
 echo "==============================";
 sudo lighttpd-enable-mod fastcgi ;
 sudo lighttpd-enable-mod fastcgi-php ;
-sudo co /etc/lighttpd/conf-available/15-fastcgi-php.conf /etc/lighttpd/conf-available/15-fastcgi-php.conf.org ;
+sudo cp /etc/lighttpd/conf-available/15-fastcgi-php.conf /etc/lighttpd/conf-available/15-fastcgi-php.conf.org ;
 MYHTTPDCONF=$(cat<<TEXT
 # -*- depends: fastcgi -*-
 # /usr/share/doc/lighttpd/fastcgi.txt.gz
@@ -48,7 +48,7 @@ echo "==============================";
 sudo mv /var/www/html /var/www/html_org ;
 cd ;
 mkdir html ;
-ln -s /home/pi/html /var/www/html ;
+sudo ln -s /home/pi/html /var/www/html ;
 
 MYPHPINFO=$(cat<<TEXT
 <?php
