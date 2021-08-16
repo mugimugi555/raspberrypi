@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# wget
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_openvino.sh && bash install_openvino.sh ;
 
 cd ;
 
