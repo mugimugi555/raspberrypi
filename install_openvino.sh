@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# this is for 32bit only
+
 # wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_openvino.sh && bash install_openvino.sh ;
 
 cd ;
