@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# wget 
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_printer.sh && bash install_printer.sh ;
 
 cd ;
 sudo apt install -y libcups2-dev ;
