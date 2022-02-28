@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-#
+# wet https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/update_hostname.sh && update_hostname.sh rpi-1 ;
 
 #=======================================================================================================================
 #
