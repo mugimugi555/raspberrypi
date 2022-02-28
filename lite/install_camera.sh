@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 
-#
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_camera.sh && install_camera.sh ;
 
 #=======================================================================================================================
-#
+# how to play stream
 #=======================================================================================================================
 LOCAL_IPADDRESS=`hostname -I | awk -F" " '{print $1}'` ;
 echo "======================================" ;
