@@ -24,7 +24,7 @@ sudo echo "bcm2835-v4l2" | sudo tee -a /etc/modules ;
 #=======================================================================================================================
 cd ;
 v4l2-ctl --list-devices ;
-sudo apt install -y cmake subversion liblivemedia-dev libssl-dev vlc ;
+sudo apt install -y cmake subversion liblivemedia-dev libssl-dev ;
 git clone https://github.com/mpromonet/h264_v4l2_rtspserver.git ;
 cd h264_v4l2_rtspserver ;
 sudo cmake . ;
