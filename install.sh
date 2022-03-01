@@ -1,154 +1,83 @@
 #!/bin/bash
 
-# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install.sh && bash install.sh ;
+#
 
-sudo echo ;
-
-#MYHOSTNAME=$(cat /proc/device-tree/model | sed 's/\(.*\)/\L\1/'| sed 's/ /_/g' );
-#sudo raspi-config nonint do_hostname $MYHOSTNAME ;
-
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 # sudo time out
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 echo 'Defaults timestamp_timeout = 1200' | sudo EDITOR='tee -a' visudo ;
 
-#-----------------------------------------------------------------------------------------------------------------------
-# apt proxy
-#-----------------------------------------------------------------------------------------------------------------------
-#sudo echo "Acquire::http::Proxy \"http://192.168.0.5:3142\";" | sudo tee -a /etc/apt/apt.conf.d/02proxy ;
+#=======================================================================================================================
+# update repository
+#=======================================================================================================================
+#sudo cp /etc/apt/sources.list /etc/apt/sources.list.back ;
+#sudo sed -i "s/http:\/\/deb.debian.org\/debian $(lsb_release -sc) main/http:\/\/ftp.jaist.ac.jp\/raspbian $(lsb_release -sc) main/" /etc/apt/sources.list ;
+#sudo apt-key adv --keyserver http://keyserver.ubuntu.com --recv-keys 9165938D90FDDD2E ;
 
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 # wall paper
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 wget http://gahag.net/img/201602/11s/gahag-0055029460-1.jpg -O /home/$USER/Pictures/1.jpg ;
 pcmanfm -w /home/$USER/Pictures/1.jpg ;
-
-# for ssh logined
 sudo mv /usr/share/rpd-wallpaper/temple.jpg /usr/share/rpd-wallpaper/temple_org.jpg ;
-sudo mv /home/pi/Pictures/1.jpg /usr/share/rpd-wallpaper/temple.jpg ;
+sudo mv /usr/share/rpd-wallpaper/clouds.jpg /usr/share/rpd-wallpaper/clouds.jpg ;
+sudo cp /home/pi/Pictures/1.jpg /usr/share/rpd-wallpaper/temple.jpg ;
+sudo cp /home/pi/Pictures/1.jpg /usr/share/rpd-wallpaper/clouds.jpg ;
 
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 # config
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 sudo raspi-config nonint do_change_pass                ;
+sudo raspi-config nonint do_vnc 0                      ;
+sudo raspi-config nonint do_legacy 0                   ;
 sudo raspi-config nonint do_camera 0                   ;
 sudo raspi-config nonint do_i2c 0                      ;
-sudo raspi-config nonint do_vnc 0                      ; # hostname:raspberrypi.local user:pi password:raspberry
 sudo raspi-config nonint do_ssh 0                      ;
 sudo raspi-config nonint do_spi 0                      ;
-sudo raspi-config nonint do_overscan 1                 ;
 sudo raspi-config nonint do_wifi_country JP            ;
 sudo raspi-config nonint do_change_locale ja_JP.UTF-8  ;
 sudo raspi-config nonint do_change_timezone Asia/Tokyo ;
 
-#-----------------------------------------------------------------------------------------------------------------------
-# set VNC password for ubuntu client
-#-----------------------------------------------------------------------------------------------------------------------
-echo "Authentication=VncAuth" | sudo tee -a /root/.vnc/config.d/vncserver-x11
-sudo vncpasswd -service
-sudo systemctl restart vncserver-x11-serviced.service
+#=======================================================================================================================
+# locale
+#=======================================================================================================================
+export LANGUAGE=ja_JP.utf8 ;
+export LANG=ja_JP.utf8 ;
+export LC_ALL=ja_JP.utf8 ;
+sudo locale-gen ja_JP.UTF-8 ;
+sudo /usr/sbin/update-locale LANG=ja_JP.UTF-8 ;
 
-#-----------------------------------------------------------------------------------------------------------------------
-# screen saver off
-#-----------------------------------------------------------------------------------------------------------------------
-SCREENSAVER=$(cat<<TEXT
-
-[SeatDefaults]
-xserver-command=X -s 0 -dpms
-
-TEXT
-)
-sudo echo "$SCREENSAVER" | sudo tee -a /etc/lightdm/lightdm.conf ;
-
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 # swap
-#-----------------------------------------------------------------------------------------------------------------------
-sudo echo "CONF_SWAPSIZE=1024" | sudo tee /etc/dphys-swapfile ;
+#=======================================================================================================================
+sudo echo "CONF_SWAPSIZE=4096" | sudo tee /etc/dphys-swapfile ;
 sudo /etc/init.d/dphys-swapfile restart ;
 
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 # software
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 echo "samba-common samba-common/workgroup string  WORKGROUP" | sudo debconf-set-selections ;
 echo "samba-common samba-common/dhcp boolean true"           | sudo debconf-set-selections ;
 echo "samba-common samba-common/do_debconf boolean true"     | sudo debconf-set-selections ;
 sudo apt update ;
 sudo apt upgrade -y ;
-sudo apt install -y emacs-nox htop curl git axel samba openssh-server net-tools exfat-fuse exfat-utils ffmpeg ibus-mozc imagemagick lame unar mpg321 mosquitto-clients ;
+sudo apt install -y                       \
+  emacs-nox htop curl git axel            \
+  samba net-tools exfat-fuse exfat-utils  \
+  ffmpeg ibus-mozc imagemagick mpg321 vlc \
+  lame unar                               \
+  mosquitto-clients ;
 sudo apt autoremove -y ;
 
-#-----------------------------------------------------------------------------------------------------------------------
-# vscode
-#-----------------------------------------------------------------------------------------------------------------------
-# sudo apt install -y code ;
-
-#-----------------------------------------------------------------------------------------------------------------------
-# cli -> desktop
-#-----------------------------------------------------------------------------------------------------------------------
-#sudo apt install -y --no-install-recommends xserver-xorg ;
-#sudo apt install -y --no-install-recommends xinit ;
-#sudo apt install -y raspberrypi-ui-mods ;
-
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 # youtube-dl
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl ;
 sudo chmod a+rx /usr/local/bin/youtube-dl ;
 
-#-----------------------------------------------------------------------------------------------------------------------
-# opencv
-#-----------------------------------------------------------------------------------------------------------------------
-#sudo pip3 install --upgrade pip ;
-#sudo apt install -y libavutil56 libcairo-gobject2 libgtk-3-0 libqtgui4 libpango-1.0-0 libqtcore4 libavcodec58 libcairo2 libswscale5 libtiff5 libqt4-test libatk1.0-0 libavformat58 libgdk-pixbuf2.0-0 libilmbase23 libopenexr23 libpangocairo-1.0-0 libwebp6 libjasper1 
-#sudo pip3 install opencv-python ;
-#sudo pip3 install opencv-python==4.1.0.25
-
-#-----------------------------------------------------------------------------------------------------------------------
-# tensorflow
-#-----------------------------------------------------------------------------------------------------------------------
-#sudo apt install -y libatlas-base-dev ;
-#pip3 install tensorflow ;
-
-#-----------------------------------------------------------------------------------------------------------------------
-# edge tpu
-#-----------------------------------------------------------------------------------------------------------------------
-#echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list ;
-#curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - ;
-#sudo apt update ;
-#sudo apt install -y libedgetpu1-std ;
-#sudo apt install -y python3-edgetpu ;
-
-#-----------------------------------------------------------------------------------------------------------------------
-# todo : posenet
-#-----------------------------------------------------------------------------------------------------------------------
-#cd ;
-#git clone https://github.com/karaage0703/raspberry-pi-setup ;
-#bash ./raspberry-pi-setup/setup-pose-estimation.sh;
-
-#pip3 install https://github.com/google-coral/pycoral/releases/download/release-frogfish/tflite_runtime-2.5.0-cp37-cp37m-linux_armv7l.whl ;
-#git clone https://github.com/google-coral/project-posenet.git ;
-#d project-posenet ;
-#sh install_requirements.sh ;
-#python pose_camera.py ;
-
-#-----------------------------------------------------------------------------------------------------------------------
-# todo : ros
-#-----------------------------------------------------------------------------------------------------------------------
-#cd ;
-#cd raspberry-pi-setup ;
-#./setup-ros-indigo-raspbian.sh ;
-
-#-----------------------------------------------------------------------------------------------------------------------
-# change mac address
-#-----------------------------------------------------------------------------------------------------------------------
-# sudo apt install -y macchanger ;
-# sudo dpkg-reconfigure macchanger ;
-# echo "macchanger -m 00:11:22:33:44:54 eth0" |sudo tee -a /etc/network/if-pre-up.d/macchanger ;
-# sudo chmod +x /etc/network/if-pre-up.d/macchanger ;
-
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 # caps2ctrl
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 CAPS2CTRL=$(cat<<TEXT
 BACKSPACE="guess"
 XKBMODEL="pc105"
@@ -157,8 +86,7 @@ XKBVARIANT=""
 XKBOPTIONS="ctrl:nocaps"
 TEXT
 )
-
-sudo echo "$CAPS2CTRL" | sudo tee /etc/default/keyboard
+echo "$CAPS2CTRL" | sudo tee /etc/default/keyboard ;
 
 MYKEYBOARD=$(cat<<TEXT
 <component>
@@ -187,11 +115,11 @@ MYKEYBOARD=$(cat<<TEXT
 </component>
 TEXT
 )
-sudo echo "$MYKEYBOARD" | sudo tee /usr/share/ibus/component/mozc.xml ;
+echo "$MYKEYBOARD" | sudo tee /usr/share/ibus/component/mozc.xml ;
 
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 # alias
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 MYALIAS=$(cat<<TEXT
 
 alias a="axel -a -n 5"
@@ -200,39 +128,9 @@ alias u='unar'
 TEXT
 )
 echo "$MYALIAS" >> ~/.bashrc ;
+source ~/.bashrc ;
 
-#-----------------------------------------------------------------------------------------------------------------------
-# hostname
-#
-# when create rasbian os to sd card
-#
-# ssh on
-# sudo touch /media/$USER/boot/ssh ;
-#
-# set hostname
-# sudo echo "rpi1at3" | sudo tee /media/$USER/boot/myhostname ;
-#-----------------------------------------------------------------------------------------------------------------------
-
-# todo arg や option でやりたいな ex) hostname=hogehoge
-MYHOSTNAME_FILE="/boot/myhostname"
-if [ -e $MYHOSTNAME_FILE ]; then
-
-  MYHOSTNAME=$(cat $MYHOSTNAME_FILE )
-  sudo raspi-config nonint do_hostname $MYHOSTNAME
-  #sudo mv $MYHOSTNAME_FILE $MYHOSTNAME_FILE.back
-  sudo rm $MYHOSTNAME_FILE
-  sudo reboot now
-
-fi
-
-#-----------------------------------------------------------------------------------------------------------------------
-# usb wifi
-# see https://github.com/UedaTakeyuki/gc_setups/blob/master/rtl8188.setup.sh
-#-----------------------------------------------------------------------------------------------------------------------
-# todo rtl8188=enable
-# wget https://raw.githubusercontent.com/UedaTakeyuki/gc_setups/master/rtl8188.setup.sh && bash rtl8188.setup.sh ;
-
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 # reboot
-#-----------------------------------------------------------------------------------------------------------------------
+#=======================================================================================================================
 sudo reboot now ;
