@@ -14,6 +14,7 @@ echo "deb http://ftp.jaist.ac.jp/raspbian $(lsb_release -sc) main contrib non-fr
 # config
 #=======================================================================================================================
 sudo raspi-config nonint do_change_pass                ;
+sudo raspi-config nonint do_legacy 0                   ;
 sudo raspi-config nonint do_camera 0                   ;
 sudo raspi-config nonint do_i2c 0                      ;
 sudo raspi-config nonint do_ssh 0                      ;
