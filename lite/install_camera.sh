@@ -31,22 +31,26 @@ sudo cmake . ;
 sudo make -j$(nproc) install ;
 
 #=======================================================================================================================
-# auto start
+# add service
 #=======================================================================================================================
-
-# backup
-sudo cp /etc/rc.local /etc/rc.local.back ;
-
-# write
-sudo sed -i 's/exit 0//' /etc/rc.local ;
-V4L2RTS=$(cat<<TEXT
-v4l2rtspserver &
-
-exit 0
-
+V4L2SERVICE=$(cat<<TEXT
+[Unit]
+Description=v4l2rtspserver rtsp streaming server
+After=network.target
+[Service]
+ExecStartPre=/usr/bin/v4l2-ctl --set-ctrl horizontal_flip=0,vertical_flip=0,video_bitrate=10000000,brightness=50,white_balance_auto_preset=7,saturation=30
+ExecStart=/usr/local/bin/v4l2rtspserver
+Type=simple
+User=root
+Group=video
+Restart=always
+[Install]
+WantedBy=multi-user.target
 TEXT
 )
-echo "$V4L2RTS" | sudo tee -a /etc/rc.local ;
+echo "$V4L2SERVICE" | sudo tee /etc/systemd/system/v4l2rtspserver.service ;
+sudo systemctl enable v4l2rtspserver.service ;
+sudo systemctl start v4l2rtspserver.service ;
 
 #=======================================================================================================================
 # finish
