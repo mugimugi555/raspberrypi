@@ -1,48 +1,75 @@
 #!/usr/bin/bash
 
-# this is for 32bit only
+#
 
-# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_openvino.sh && bash install_openvino.sh ;
-
-cd ;
-
-echo "==============================";
-echo " download openvino";
-echo "==============================";
-wget "https://storage.openvinotoolkit.org/repositories/openvino/packages/2021.4/l_openvino_toolkit_runtime_raspbian_p_2021.4.582.tgz"
-sudo mkdir -p /opt/intel/openvino_2021
-sudo tar -xf l_openvino_toolkit_runtime_raspbian_p_2021.4.582.tgz --strip 1 -C /opt/intel/openvino_2021 ;
-sudo apt update 
-sudo apt install cmake
-
-echo "==============================";
-echo " add config";
-echo "==============================";
-source /opt/intel/openvino_2021/bin/setupvars.sh ;
-echo "source /opt/intel/openvino_2021/bin/setupvars.sh" >> ~/.bashrc ;
-sudo usermod -a -G users "$(whoami)" ;
-source /opt/intel/openvino_2021/bin/setupvars.sh ;
-sh /opt/intel/openvino_2021/install_dependencies/install_NCS_udev_rules.sh ;
-
-echo "==============================";
-echo " make samples";
-echo "==============================";
+#=======================================================================================================================
+# install OpenVINO 2021.4 for python3.9
+#=======================================================================================================================
+sudo apt install -y git-lfs cython3 ;
+sudo apt install -y \
+  build-essential \
+  curl \
+  wget \
+  libssl-dev \
+  ca-certificates \
+  git \
+  libboost-regex-dev \
+  libgtk2.0-dev \
+  pkg-config \
+  unzip \
+  automake \
+  libtool \
+  autoconf \
+  libcairo2-dev \
+  libpango1.0-dev \
+  libglib2.0-dev \
+  libgtk2.0-dev \
+  libswscale-dev \
+  libavcodec-dev \
+  libavformat-dev \
+  libgstreamer1.0-0 \
+  gstreamer1.0-plugins-base \
+  libusb-1.0-0-dev \
+  libopenblas-dev ;
+git clone -b 2021.4 https://github.com/openvinotoolkit/openvino.git openvino-2021.4 ;
+cd openvino-2021.4 ;
+git submodule update --init --recursive ;
 mkdir build ;
 cd build ;
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-march=armv7-a" /opt/intel/openvino_2021/deployment_tools/inference_engine/samples/cpp ;
-#make -j2 object_detection_sample_ssd ;
-make -j2 * ;
+cmake \
+    -DCMAKE_INSTALL_PREFIX=/opt/intel/openvino \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_SSE42=OFF \
+    -DTHREADING=SEQ \
+    -DENABLE_GNA=OFF \
+    -DENABLE_PYTHON=ON \
+    -DPYTHON_EXECUTABLE=/usr/bin/python3.9 \
+    -DPYTHON_LIBRARY=/usr/lib/aarch64-linux-gnu/libpython3.9.so \
+    -DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
+     .. ;
+make -j$(nproc) ;
+sudo make install ;
+source /opt/intel/openvino/bin/setupvars.sh ;
+~/openvino-2021.4/scripts/install_dependencies/install_NCS_udev_rules.sh ;
 
-echo "==============================";
-echo " download models";
-echo "==============================";
-
-git clone --depth 1 https://github.com/openvinotoolkit/open_model_zoo ;
-cd open_model_zoo/tools/downloader ;
-python3 -m pip install -r requirements.in ;
-git clone --depth 1 https://github.com/openvinotoolkit/open_model_zoo ;
-cd open_model_zoo/tools/downloader ;
-python3 -m pip install -r requirements.in ;
-python3 downloader.py --name face-detection-adas-0001  ;
-
-#./armv7l/Release/object_detection_sample_ssd -m <path_to_model>/face-detection-adas-0001.xml -d MYRIAD -i <path_to_image>
+#=======================================================================================================================
+# install OpenVINO-OpenCV for python3.9
+#=======================================================================================================================
+source /opt/intel/openvino/bin/setupvars.sh ;
+git clone --depth 1 -b 4.5.3-openvino https://github.com/opencv/opencv.git opencv-4.5.3-openvino ;
+sudo apt install -y libtbb-dev libjpeg-dev libtiff-dev libwebp-dev ;
+cd opencv-4.5.3-openvino ;
+mkdir build ;
+cd build ;
+cmake \
+    -DCMAKE_INSTALL_PREFIX=/opt/intel/openvino/opencv \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DWITH_INF_ENGINE=ON \
+    -DENABLE_CXX11=ON \
+    -DWITH_TBB=ON \
+    -DPYTHON_EXECUTABLE=/usr/bin/python3.9 \
+    -DPYTHON_LIBRARY=/usr/lib/aarch64-linux-gnu/libpython3.9.so \
+    -DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
+    .. ;
+make -j$(nproc) ;
+sudo make install ;
