@@ -3,7 +3,7 @@
 # wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_camera_web.sh && bash install_camera_web.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# enable legacy camera ( 0 = on )
+# enable legacy camera ( 0 is on )
 #-----------------------------------------------------------------------------------------------------------------------
 sudo raspi-config nonint do_legacy 0 ;
 sudo raspi-config nonint do_camera 0 ;
@@ -23,7 +23,7 @@ make ;
 sudo make install ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# teststart app
+# test start app
 #-----------------------------------------------------------------------------------------------------------------------
 #export LD_LIBRARY_PATH=. ;
 #./mjpg_streamer -o "output_http.so -w ./www" -i "input_raspicam.so" ;
