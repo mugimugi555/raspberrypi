@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_camera.sh && install_camera.sh ;
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_camera_rtsp.sh && install_camera_rtsp.sh ;
 
 #=======================================================================================================================
 # how to play stream
