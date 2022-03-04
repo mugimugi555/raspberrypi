@@ -44,6 +44,8 @@ echo "$V4L2SERVICE" | sudo tee /etc/systemd/system/v4l2rtspserver.service ;
 sudo systemctl enable v4l2rtspserver.service ;
 sudo systemctl daemon-reload ;
 sudo systemctl start v4l2rtspserver.service ;
+#sudo systemctl stop v4l2rtspserver.service ;
+#sudo systemctl disable v4l2rtspserver.service ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # finish
