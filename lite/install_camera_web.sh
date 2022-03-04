@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-#
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_camera_web.sh && bash install_camera_web.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # enable legacy camera ( 0 = on )
