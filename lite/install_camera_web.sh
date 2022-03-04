@@ -61,3 +61,19 @@ echo "======================================" ;
 echo "visit =>" ;
 echo "http://$LOCAL_IPADDRESS:8080" ;
 echo "======================================" ;
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# option
+# http://make.bcde.jp/raspberry-pi/usb%E3%82%AB%E3%83%A1%E3%83%A9%E3%81%A7%E7%9B%A3%E8%A6%96%E3%82%AB%E3%83%A1%E3%83%A9/#MJPG-streamer
+# https://github.com/jacksonliam/mjpg-streamer
+#-----------------------------------------------------------------------------------------------------------------------
+#PORT="8080" #ポート番号
+#ID="user" #ID
+#PW="passward" #パスワード
+#SIZE="320x240" #画面サイズ
+#FRAMERATE="2" #フレームレート
+#export LD_LIBRARY_PATH=/usr/local/lib
+#./mjpg_streamer \
+#    -i "input_uvc.so -f $FRAMERATE -r $SIZE -d /dev/video0 -y -n" \
+#    -o "output_http.so -w /usr/local/www -p $PORT -c $ID:$PW"
