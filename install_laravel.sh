@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-#
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_laravel.sh && bash install_laravel.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # install lamp
