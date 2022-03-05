@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install.sh && bash install.sh ;
 
 #=======================================================================================================================
 # sudo time out
