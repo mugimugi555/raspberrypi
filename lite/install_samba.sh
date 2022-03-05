@@ -48,3 +48,16 @@ echo "======================================" ;
 echo "visit => \\$LOCAL_IPADDRESS" ;
 echo "======================================" ;
 
+#-----------------------------------------------------------------------------------------------------------------------
+# input command on your pc
+#-----------------------------------------------------------------------------------------------------------------------
+
+#PI_IPADDRESS=
+#PI_PASSWORD=
+
+#sudo umount /mnt/pi-share ;
+#sudo mkdir /mnt/pi-share ;
+#sudo chown $USER:$USER /mnt/pi-share ;
+#sudo mount -t cifs -o username=pi,password=$PI_PASSWORD,uid=1000,gid=1000,file_mode=0666,dir_mode=0777 //$PI_IPADDRESS/pi /mnt/pi-share ;
+
+#echo "//$PI_IPADDRESS/pi          /mnt/pi-share           cifs username=pi,password=$PI_PASSWORD,uid=1000,gid=1000,file_mode=0777,dir_mode=0777 0 0" sudo tee -a /etc/fstab ;
