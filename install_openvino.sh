@@ -7,6 +7,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 sudo apt install -y git-lfs cython3 ;
 sudo apt install -y \
+  cmake \
   build-essential \
   curl \
   wget \
