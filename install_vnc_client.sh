@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_vncviewer.sh && bash install_vncviewer.sh ;
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_vnc_client.sh && bash install_vnc_client.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # update
