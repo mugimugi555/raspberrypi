@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-#
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_edgetpu.sh && bash install_edgetpu.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # add repository
