@@ -1,6 +1,13 @@
 #!/usr/bin/bash
 
-#
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_tensorflow.sh && bash install_tensorflow.sh ;
+
+#-----------------------------------------------------------------------------------------------------------------------
+# update install library
+#-----------------------------------------------------------------------------------------------------------------------
+sudo apt update ;
+sudo apt upgrade -y ;
+sudo apt install python3-pip ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # install tensorflow for 64bit python 3.9
