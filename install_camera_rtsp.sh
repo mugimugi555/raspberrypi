@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_camera_rtsp.sh && bash install_camera_rtsp.sh ;
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_camera_rtsp.sh && bash install_camera_rtsp.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # enable spi legacy camera
