@@ -20,7 +20,7 @@ echo 'Defaults timestamp_timeout = 1200' | sudo EDITOR='tee -a' visudo ;
 wget http://gahag.net/img/201602/11s/gahag-0055029460-1.jpg -O /home/$USER/Pictures/1.jpg ;
 pcmanfm -w /home/$USER/Pictures/1.jpg ;
 sudo mv /usr/share/rpd-wallpaper/temple.jpg /usr/share/rpd-wallpaper/temple_org.jpg ;
-sudo mv /usr/share/rpd-wallpaper/clouds.jpg /usr/share/rpd-wallpaper/clouds.jpg ;
+sudo mv /usr/share/rpd-wallpaper/clouds.jpg /usr/share/rpd-wallpaper/clouds_org.jpg ;
 sudo cp /home/pi/Pictures/1.jpg /usr/share/rpd-wallpaper/temple.jpg ;
 sudo cp /home/pi/Pictures/1.jpg /usr/share/rpd-wallpaper/clouds.jpg ;
 
