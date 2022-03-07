@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-#
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_music_autoplay.sh && bash install_music_autoplay.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # install music player
