@@ -28,10 +28,10 @@ AUTO_START_SHELL=$(cat<<TEXT
 play -q -v 0.3 /home/pi/Music/autoplay.mp3 repeat &
 TEXT
 )
-echo "$AUTO_START_SHELL" > ~/autorun.sh ;
-touch ~/os_term.sh ;
-chmod +x ~/autorun.sh ;
-chmod +x ~/os_term.sh ;
+echo "$AUTO_START_SHELL" > ~/.os_start_run.sh ;
+touch ~/.os_end_run.sh ;
+chmod +x ~/.os_start_run.sh ;
+chmod +x ~/.os_end_run.sh ;
 
 AUTO_START_SERVICE=$(cat<<TEXT
 [Unit]
@@ -39,8 +39,8 @@ Description=Execute at OS startup and terminates
 After=network.target
 [Service]
 Type=oneshot
-ExecStart=/home/pi/autorun.sh
-ExecStop=/home/pi/os_term.sh
+ExecStart=/home/pi/.os_start_run.sh
+ExecStop=/home/pi/.os_end_run.sh
 RemainAfterExit=true
 [Install]
 WantedBy=multi-user.target
