@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-#
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_bullseye.sh && bash install_bullseye.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # backup repository
