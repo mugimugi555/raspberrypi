@@ -7,7 +7,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 sudo apt update ;
 sudo apt upgrade -y ;
-sudo apt-get install ca-certificates apt-transport-https software-properties-common wget curl lsb-release -y ;
+sudo apt install -y ca-certificates apt-transport-https software-properties-common wget curl lsb-release ;
 curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x ;
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -15,7 +15,7 @@ curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x ;
 #-----------------------------------------------------------------------------------------------------------------------
 sudo apt update ;
 sudo apt upgrade -y ;
-sudo apt install  \
+sudo apt install -y \
   apache2 \
   php php-cli php-fpm php-mbstring php-mysql php-curl php-gd php-curl php-zip php-xml \
   mariadb-server ;
@@ -23,7 +23,7 @@ sudo apt install  \
 #-----------------------------------------------------------------------------------------------------------------------
 # enable php-fpm
 #-----------------------------------------------------------------------------------------------------------------------
-sudo apt -y install libapache2-mod-fcgid ;
+sudo apt install -y libapache2-mod-fcgid ;
 sudo a2enmod proxy_fcgi setenvif ;
 PHPVERSION=$(php -v | head -n 1 | cut -d " " -f 2 | cut -f1-2 -d".") ;
 sudo a2enconf php$PHPVERSION-fpm ;
