@@ -23,17 +23,17 @@ mv 9PojIPYhGlM.mp3 ~/Music/autoplay.mp3 ;
 #-----------------------------------------------------------------------------------------------------------------------
 # setting auto start command
 #-----------------------------------------------------------------------------------------------------------------------
-AUTO_START_SHELL=$(cat<<TEXT
+OS_START_RUN_SHELL=$(cat<<TEXT
 #!/usr/bin/bash
 play -q -v 0.3 /home/pi/Music/autoplay.mp3 repeat &
 TEXT
 )
-echo "$AUTO_START_SHELL" > ~/.os_start_run.sh ;
+echo "$OS_START_RUN_SHELL" > ~/.os_start_run.sh ;
 touch ~/.os_end_run.sh ;
 chmod +x ~/.os_start_run.sh ;
 chmod +x ~/.os_end_run.sh ;
 
-AUTO_START_SERVICE=$(cat<<TEXT
+OS_START_SERVICE=$(cat<<TEXT
 [Unit]
 Description=Execute at OS startup and terminates
 After=network.target
@@ -46,7 +46,7 @@ RemainAfterExit=true
 WantedBy=multi-user.target
 TEXT
 )
-echo "$AUTO_START_SERVICE" | sudo tee /etc/systemd/system/autorun.service ;
+echo "$OS_START_SERVICE" | sudo tee /etc/systemd/system/autorun.service ;
 
 sudo systemctl daemon-reload ;
 sudo systemctl enable autorun.service ;
