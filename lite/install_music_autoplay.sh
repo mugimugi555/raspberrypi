@@ -27,7 +27,7 @@ mv 9PojIPYhGlM.mp3 ~/Music/autoplay.mp3 ;
 # create os start run file
 OS_START_RUN_SHELL=$(cat<<TEXT
 #!/usr/bin/bash
-play -q -v 0.3 /home/pi/Music/autoplay.mp3 repeat &
+play -q -v 0.3 /home/pi/Music/autoplay.mp3 repeat 99999 &
 TEXT
 )
 echo "$OS_START_RUN_SHELL" > ~/.os_start_run.sh ;
