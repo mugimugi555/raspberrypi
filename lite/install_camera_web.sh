@@ -18,6 +18,7 @@ sudo apt install -y gcc g++ cmake libjpeg-dev git ;
 #-----------------------------------------------------------------------------------------------------------------------
 cd ;
 git clone https://github.com/jacksonliam/mjpg-streamer.git ;
+cd mjpg-streamer ;
 cd mjpg-streamer-experimental ;
 make -j$(nproc) ;
 sudo make install ;
