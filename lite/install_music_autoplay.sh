@@ -17,7 +17,7 @@ sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/you
 sudo chmod a+rx /usr/local/bin/youtube-dl ;
 cd ;
 mkdir ~/Music ;
-youtube-dl --id -x --audio-format mp3 https://www.youtube.com/watch?v=9PojIPYhGlM ;
+youtube-dl --id -x --audio-format mp3 https://www.youtube.com/watch?v=Nj9AoKzhe3U ;
 mv 9PojIPYhGlM.mp3 ~/Music/autoplay.mp3 ;
 
 #-----------------------------------------------------------------------------------------------------------------------
