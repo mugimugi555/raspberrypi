@@ -6,8 +6,7 @@
 # install music player
 #-----------------------------------------------------------------------------------------------------------------------
 sudo apt update ;
-sudo apt install -y sox ;
-sudo apt install -y libsox-fmt-all ;
+sudo apt install -y sox libsox-fmt-all ;
 sox --version ;
 play --version ;
 
