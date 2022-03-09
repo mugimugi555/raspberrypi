@@ -5,19 +5,19 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # install gpio command
 #-----------------------------------------------------------------------------------------------------------------------
-sudo apt update ;
-sudo apt install -y wiringpi ;
+#sudo apt update ;
+#sudo apt install -y wiringpi ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # manual install
 #-----------------------------------------------------------------------------------------------------------------------
-#sudo apt purge -y wiringpi ;
-#hash -r ;
-#cd ;
-#git clone https://github.com/WiringPi/WiringPi.git ;
-#cd WiringPi cd ;
-#sudo ./build uninstall ;
-#sudo ldconfig ;
+sudo apt purge -y wiringpi ;
+hash -r ;
+cd ;
+git clone https://github.com/WiringPi/WiringPi.git ;
+cd WiringPi ;
+sudo ./build ;
+sudo ldconfig ;
 #sudo ./build install ;
 
 #-----------------------------------------------------------------------------------------------------------------------
