@@ -28,7 +28,7 @@ sudo a2enmod proxy_fcgi setenvif ;
 PHPVERSION=$(php -v | head -n 1 | cut -d " " -f 2 | cut -f1-2 -d".") ;
 sudo a2enconf php$PHPVERSION-fpm ;
 sudo systemctl restart apache2 ;
-sudo systemctl status php$PHPVERSION-fpm ;
+#sudo systemctl status php$PHPVERSION-fpm ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # finish
