@@ -22,8 +22,8 @@
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl ;
 sudo chmod a+rx /usr/local/bin/youtube-dl ;
 cd ;
-youtube-dl --id -x --audio-format mp3 https://www.youtube.com/watch?v=9PojIPYhGlM ;
-mv 9PojIPYhGlM.mp3 ~/Music/autoplay.mp3 ;
+youtube-dl --id -x --audio-format mp3 https://www.youtube.com/watch?v=Nj9AoKzhe3U ;
+mv Nj9AoKzhe3U.mp3 ~/Music/autoplay.mp3 ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # setting auto start command
