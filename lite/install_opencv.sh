@@ -9,7 +9,7 @@ sudo apt update ;
 sudo apt upgrade -y ;
 sudo apt install -y python3-pip ;
 pip3 install opencv-python-headless ;
-pip3 install opencv-contrib-python-headless ;
+#pip3 install opencv-contrib-python-headless ;
 pip3 install numpy matplotlib ;
 
 #-----------------------------------------------------------------------------------------------------------------------
