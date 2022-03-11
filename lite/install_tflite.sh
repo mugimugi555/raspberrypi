@@ -25,7 +25,8 @@ sudo cmake ../tensorflow_src/tensorflow/lite \
     -DCMAKE_SYSTEM_NAME=Linux \
     -DCMAKE_SYSTEM_PROCESSOR=armv6 \
     -DTFLITE_ENABLE_XNNPACK=OFF
-    
+sudo cmake --build . --verbose -j 1 -t _pywrap_tensorflow_interpreter_wrapper
+
 #-----------------------------------------------------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------------------------------------------------
