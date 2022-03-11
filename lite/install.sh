@@ -1,6 +1,3 @@
-#-----------------------------------------------------------------------------------------------------------------------
-
-
 #!/bin/bash
 
 # wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install.sh && bash install.sh ;
