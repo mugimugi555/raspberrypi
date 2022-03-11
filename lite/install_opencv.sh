@@ -20,8 +20,8 @@ sudo apt install -y libswscale5 ;
 # sudo apt install -y libwebp6 ;
 # sudo apt install -y libtiff5 ;
 # sudo apt install -y libjasper1 ;
-# sudo apt install -y libilmbase23 ;
-# sudo apt install -y libopenexr23 ;
+# sudo apt install -y libilmbase25 ;
+# sudo apt install -y libopenexr25 ;
 
 pip3 install opencv-python-headless ;
 pip3 install opencv-contrib-python-headless ;
