@@ -8,9 +8,9 @@
 sudo apt update ;
 sudo apt upgrade -y ;
 sudo apt install -y python3-pip ;
-sudo apt install -y libatlas-base-dev ;
+sudo apt install -y libatlas-base-dev libopenjp2-7 ;
 pip3 install opencv-python-headless ;
-#pip3 install opencv-contrib-python-headless ;
+pip3 install opencv-contrib-python-headless ;
 pip3 install numpy matplotlib ;
 
 #-----------------------------------------------------------------------------------------------------------------------
