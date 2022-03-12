@@ -17,6 +17,7 @@ sudo apt update ;
 sudo apt upgrade -y ;
 sudo apt install -y cmake git ;
 sudo apt install -y python3.9-dev ;
+sudo apt install -y python3-numpy ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 #
