@@ -1,6 +1,6 @@
+#!/usr/bin/bash
 
-
-# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/tensorflow/create_tensorflow_lite.sh && bash create_tensorflow_lite.sh ;
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/tensorflow/crate_cp39.sh && bash create_cp39.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # swap
