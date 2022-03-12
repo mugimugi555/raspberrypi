@@ -40,26 +40,32 @@ sudo cmake --build . --verbose -j 1 -t _pywrap_tensorflow_interpreter_wrapper
 #
 #-----------------------------------------------------------------------------------------------------------------------
 cd ~/tensorflow_src/tensorflow/lite/tools/pip_package/
-sudo mkdir gen
-sudo mkdir gen/tflite_pip
-sudo mkdir gen/tflite_pip/python3.9
-sudo mkdir gen/tflite_pip/python3.9/tflite_runtime
+mkdir gen
+mkdir gen/tflite_pip
+mkdir gen/tflite_pip/python3.9
+mkdir gen/tflite_pip/python3.9/tflite_runtime
 cd gen/tflite_pip/python3.9
-sudo cp -r ~/tensorflow_src/tensorflow/lite/tools/pip_package/debian/ ./
-sudo cp -r ~/tensorflow_src/tensorflow/lite/tools/pip_package/MANIFEST.in ./
-sudo cp -r ~/tensorflow_src/tensorflow/lite/python/interpreter_wrapper/ ./
-sudo cp ~/tensorflow_src/tensorflow/lite/tools/pip_package/setup_with_binary.py ./setup.py
-sudo cp ~/tensorflow_src/tensorflow/lite/python/interpreter.py ./tflite_runtime/
-sudo cp ~/tensorflow_src/tensorflow/lite/python/metrics_interface.py ./tflite_runtime/
-sudo cp ~/tensorflow_src/tensorflow/lite/python/metrics_portable.py ./tflite_runtime/
-sudo cp ~/tflite_build/_pywrap_tensorflow_interpreter_wrapper.so ./tflite_runtime/
-sudo chmod u+w ./tflite_runtime/_pywrap_tensorflow_interpreter_wrapper.so
-sudo touch ./tflite_runtime/__init__.py
-sudo echo "__version__ = '2.8.0'" >> ./tflite_runtime/__init__.py
-sudo echo "__git_version__ = '$(git -C ~/tensorflow_src describe)'" >> ./tflite_runtime/__init__.py
-sudo python3 setup.py bdist --plat-name=linux_armv6l bdist_wheel --plat-name=linux-armv6l
+cp -r ~/tensorflow_src/tensorflow/lite/tools/pip_package/debian/ ./
+cp -r ~/tensorflow_src/tensorflow/lite/tools/pip_package/MANIFEST.in ./
+cp -r ~/tensorflow_src/tensorflow/lite/python/interpreter_wrapper/ ./
+cp ~/tensorflow_src/tensorflow/lite/tools/pip_package/setup_with_binary.py ./setup.py
+cp ~/tensorflow_src/tensorflow/lite/python/interpreter.py ./tflite_runtime/
+cp ~/tensorflow_src/tensorflow/lite/python/metrics_interface.py ./tflite_runtime/
+cp ~/tensorflow_src/tensorflow/lite/python/metrics_portable.py ./tflite_runtime/
+cp ~/tflite_build/_pywrap_tensorflow_interpreter_wrapper.so ./tflite_runtime/
+chmod u+w ./tflite_runtime/_pywrap_tensorflow_interpreter_wrapper.so
+
+export PROJECT_NAME=tensorflow_lite ;
+export PACKAGE_VERSION=2.8.0 ;
+touch ./tflite_runtime/__init__.py
+echo "__version__ = '2.8.0'" >> ./tflite_runtime/__init__.py
+echo "__git_version__ = '$(git -C ~/tensorflow_src describe)'" >> ./tflite_runtime/__init__.py
+python3 setup.py bdist --plat-name=linux_armv6l bdist_wheel --plat-name=linux-armv6l
 
 #-----------------------------------------------------------------------------------------------------------------------
 #
 #-----------------------------------------------------------------------------------------------------------------------
-ls -al ~/tensorflow_src/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3.9/dist
+ls -al ~/tensorflow_src/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3.9/dist ;
+cd ~/tensorflow_src/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3.9/dist ;
+pip3 install tensorflow_lite-2.8.0-cp39-cp39-linux_armv6l.whl ;
+python3 -c 'import tflite_runtime as tf; print(tf.__version__)' ;
