@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/tensorflow/crate_cp39.sh && bash create_cp39.sh ;
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/tensorflow/create_armv6_cp39.sh && bash create_armv6_cp39.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # swap
@@ -9,7 +9,7 @@ sudo echo "CONF_SWAPSIZE=2048" | sudo tee /etc/dphys-swapfile ;
 sudo /etc/init.d/dphys-swapfile restart ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-#
+# 
 #-----------------------------------------------------------------------------------------------------------------------
 sudo apt update ;
 sudo apt upgrade -y ;
@@ -20,8 +20,10 @@ sudo apt install -y python3-numpy ;
 pip3 install pybind11 ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-#
+# for armv6 and python3.9 raspberry pi zero and 1
 #-----------------------------------------------------------------------------------------------------------------------
+uname -m ;
+python3 --version ;
 cd ~ ;
 git clone https://github.com/tensorflow/tensorflow.git tensorflow_src ;
 mkdir tflite_build ;
