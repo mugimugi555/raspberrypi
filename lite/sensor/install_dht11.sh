@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-#
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/sensor/install_dht11.sh && bash install_dht11.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 #
