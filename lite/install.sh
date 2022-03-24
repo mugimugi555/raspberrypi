@@ -50,7 +50,7 @@ sudo apt install -y                      \
   emacs-nox htop curl git axel           \
   samba net-tools exfat-fuse exfat-utils \
   ffmpeg ibus-mozc imagemagick mpg321    \
-  lame unar                              \
+  lame unar lshw                         \
   mosquitto-clients ;
 sudo apt autoremove -y ;
 
