@@ -25,10 +25,10 @@ docker version ;
 #-----------------------------------------------------------------------------------------------------------------------
 sudo apt update ;
 sudo apt install -y python3 python3-pip ;
-pip3 install docker-compose ;
+sudo pip3 install docker-compose ;
 sudo systemctl restart docker ;
 source .profile ;
-docker-compose version ;
+sudo docker-compose version ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # install docker-mirakurun-epgstation
