@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/sensor/install_dht11_web.sh && bash install_dht11_web.sh ;
+
 #-----------------------------------------------------------------------------------------------------------------------
 # install python3 pip
 #-----------------------------------------------------------------------------------------------------------------------
