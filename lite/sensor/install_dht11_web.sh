@@ -26,7 +26,7 @@ pip3 install bottle ;
 #-----------------------------------------------------------------------------------------------------------------------
 cd ;
 MY_DHT11_WEB=$(cat<<TEXT
-rom bottle import route, run
+from bottle import route, run
 from bottle import response
 
 import json
