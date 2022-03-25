@@ -41,9 +41,9 @@ sudo chown pi:pi docker-mirakurun-epgstation ;
 
 # copy sample tuner config
 cd docker-mirakurun-epgstation ;
-cp epgstation/config/operatorLogConfig.sample.yml epgstation/config/operatorLogConfig.yml ;
+cp epgstation/config/operatorLogConfig.sample.yml   epgstation/config/operatorLogConfig.yml   ;
 cp epgstation/config/epgUpdaterLogConfig.sample.yml epgstation/config/epgUpdaterLogConfig.yml ;
-cp epgstation/config/serviceLogConfig.sample.yml epgstation/config/serviceLogConfig.yml ;
+cp epgstation/config/serviceLogConfig.sample.yml    epgstation/config/serviceLogConfig.yml    ;
 
 # install docker-mirakurun-epgstation
 cd ~/tv/docker-mirakurun-epgstation ;
