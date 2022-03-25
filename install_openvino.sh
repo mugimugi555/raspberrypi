@@ -3,7 +3,7 @@
 # wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_openvino.sh && bash install_openvino.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# install OpenVINO 2021.4 for python3.9
+# install OpenVINO 2022.1 for python3.9
 #-----------------------------------------------------------------------------------------------------------------------
 sudo apt install -y git-lfs cython3 ;
 sudo apt install -y \
@@ -32,8 +32,8 @@ sudo apt install -y \
   gstreamer1.0-plugins-base \
   libusb-1.0-0-dev \
   libopenblas-dev ;
-git clone -b 2021.4 https://github.com/openvinotoolkit/openvino.git openvino-2021.4 ;
-cd openvino-2021.4 ;
+git clone https://github.com/openvinotoolkit/openvino.git openvino-2022.1 ;
+cd openvino-2022.1 ;
 git submodule update --init --recursive ;
 mkdir build ;
 cd build ;
@@ -51,15 +51,15 @@ cmake \
 make -j$(nproc) ;
 sudo make install ;
 source /opt/intel/openvino/bin/setupvars.sh ;
-~/openvino-2021.4/scripts/install_dependencies/install_NCS_udev_rules.sh ;
+~/openvino-2022.1/scripts/install_dependencies/install_NCS_udev_rules.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # install OpenVINO-OpenCV for python3.9
 #-----------------------------------------------------------------------------------------------------------------------
 source /opt/intel/openvino/bin/setupvars.sh ;
-git clone --depth 1 -b 4.5.3-openvino https://github.com/opencv/opencv.git opencv-4.5.3-openvino ;
+git clone https://github.com/opencv/opencv.git opencv-openvino ;
 sudo apt install -y libtbb-dev libjpeg-dev libtiff-dev libwebp-dev ;
-cd opencv-4.5.3-openvino ;
+cd opencv-openvino ;
 mkdir build ;
 cd build ;
 cmake \
