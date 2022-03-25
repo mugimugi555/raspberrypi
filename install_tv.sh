@@ -56,8 +56,6 @@ curl -X PUT "http://localhost:40772/api/config/channels/scan" ;
 #-----------------------------------------------------------------------------------------------------------------------
 # finish
 #-----------------------------------------------------------------------------------------------------------------------
-sudo rm /var/www/html/index.html ;
-echo "<?php phpinfo(); " | sudo tee /var/www/html/index.php ;
 LOCAL_IPADDRESS=`hostname -I | awk -F" " '{print $1}'` ;
 echo "======================================" ;
 echo "visit => http://$LOCAL_IPADDRESS:8888/" ;
