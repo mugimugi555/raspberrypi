@@ -39,7 +39,7 @@ sudo docker-compose version ;
 mkdir ~/tv ;
 cd ~/tv ;
 git clone https://github.com/CH3COOH/docker-mirakurun-epgstation.git ;
-sudo chown pi:pi docker-mirakurun-epgstation ;
+sudo chown $USER:$USER docker-mirakurun-epgstation ;
 
 # copy sample tuner config
 cd docker-mirakurun-epgstation ;
