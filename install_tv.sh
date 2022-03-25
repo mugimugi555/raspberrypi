@@ -27,7 +27,6 @@ sudo apt update ;
 sudo apt install -y python3 python3-pip ;
 sudo pip3 install docker-compose ;
 sudo systemctl restart docker ;
-source .profile ;
 sudo docker-compose version ;
 
 #-----------------------------------------------------------------------------------------------------------------------
