@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_tv.sh && bash install_tv.sh ;
+
 # https://blog.ch3cooh.jp/entry/2021/04/06/200732
 
 #-----------------------------------------------------------------------------------------------------------------------
