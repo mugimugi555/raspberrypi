@@ -36,6 +36,7 @@ sudo docker-compose version ;
 #-----------------------------------------------------------------------------------------------------------------------
 
 # git clone
+mkdir ~/tv ;
 cd ~/tv ;
 git clone https://github.com/CH3COOH/docker-mirakurun-epgstation.git ;
 sudo chown pi:pi docker-mirakurun-epgstation ;
