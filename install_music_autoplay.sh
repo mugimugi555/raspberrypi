@@ -75,7 +75,7 @@ sudo systemctl enable autorun.service ;
 #-----------------------------------------------------------------------------------------------------------------------
 # finish
 #-----------------------------------------------------------------------------------------------------------------------
-play -q -v 0.3 /home/pi/Music/autoplay.mp3 repeat 99999 &
+play -q -v 0.3 /home/$USER/Music/autoplay.mp3 repeat 99999 &
 echo "============================================" ;
 echo "if you want stop sound. hit the next command" ;
 echo "             sudo pkill play";
