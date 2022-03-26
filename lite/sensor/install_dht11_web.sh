@@ -54,6 +54,31 @@ TEXT
 echo "$MY_DHT11_WEB" > ~/dht11_web.py ;
 
 #-----------------------------------------------------------------------------------------------------------------------
+# add service
+#-----------------------------------------------------------------------------------------------------------------------
+DHT11_SERVICE=$(cat<<TEXT
+[Unit]
+Description=sensor dht11 web server
+After=network.target
+[Service]
+ExecStartPre=
+ExecStart=/usr/bin/python /home/$USER/dht11_web.py
+Type=simple
+User=root
+Group=root
+Restart=always
+[Install]
+WantedBy=multi-user.target
+TEXT
+)
+echo "$DHT11_SERVICE" | sudo tee /etc/systemd/system/dht11.service ;
+sudo systemctl enable dht11.service ;
+sudo systemctl daemon-reload ;
+sudo systemctl start dht11.service ;
+#sudo systemctl stop dht11.service ;
+#sudo systemctl disable dht11.service ;
+
+#-----------------------------------------------------------------------------------------------------------------------
 # finish
 #-----------------------------------------------------------------------------------------------------------------------
 LOCAL_IPADDRESS=`hostname -I | awk -F" " '{print $1}'` ;
@@ -65,4 +90,4 @@ echo "======================================" ;
 #-----------------------------------------------------------------------------------------------------------------------
 # do sensor
 #-----------------------------------------------------------------------------------------------------------------------
-sudo python3 dht11_web.py ;
+# sudo python3 dht11_web.py ;
