@@ -28,7 +28,7 @@ mv Nj9AoKzhe3U.mp3 ~/Music/autoplay.mp3 ;
 # create os start run file
 OS_START_RUN_SHELL=$(cat<<TEXT
 #!/usr/bin/bash
-play -q -v 0.3 /home/pi/Music/autoplay.mp3 repeat 99999 &
+play -q -v 0.3 /home/$USER/Music/autoplay.mp3 repeat 99999 &
 TEXT
 )
 echo "$OS_START_RUN_SHELL" > ~/.os_start_run.sh ;
@@ -47,8 +47,8 @@ Description=Execute at OS startup and terminates
 After=network.target
 [Service]
 Type=oneshot
-ExecStart=/home/pi/.os_start_run.sh
-ExecStop=/home/pi/.os_end_run.sh
+ExecStart=/home/$USER/.os_start_run.sh
+ExecStop=/home/$USER/.os_end_run.sh
 RemainAfterExit=true
 [Install]
 WantedBy=multi-user.target
@@ -63,7 +63,7 @@ sudo systemctl enable autorun.service ;
 #-----------------------------------------------------------------------------------------------------------------------
 # finish
 #-----------------------------------------------------------------------------------------------------------------------
-play -q -v 0.3 /home/pi/Music/autoplay.mp3 repeat 99999 &
+play -q -v 0.3 /home/$USER/Music/autoplay.mp3 repeat 99999 &
 echo "============================================" ;
 echo "if you want stop sound. hit the next command" ;
 echo "             sudo pkill play";
