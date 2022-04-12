@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_yolo_5.sh && bash install_yolo_5.sh ;
+
 #
 sudo apt update ;
 sudo apt install -y git python3-pip ;
