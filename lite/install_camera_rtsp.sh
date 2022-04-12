@@ -30,7 +30,7 @@ V4L2SERVICE=$(cat<<TEXT
 Description=v4l2rtspserver rtsp streaming server
 After=network.target
 [Service]
-ExecStartPre=/usr/bin/v4l2-ctl --set-ctrl horizontal_flip=0,vertical_flip=0,video_bitrate=10000000,brightness=50,white_balance_auto_preset=7,saturation=30
+#ExecStartPre=/usr/bin/v4l2-ctl --set-ctrl horizontal_flip=0,vertical_flip=0,video_bitrate=10000000,brightness=50,white_balance_auto_preset=7,saturation=30
 ExecStart=/usr/local/bin/v4l2rtspserver -W 1280 -H 960 -F 7
 Type=simple
 User=root
