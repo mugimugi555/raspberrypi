@@ -25,6 +25,6 @@ python detect.py ;
 #                           rtsp://127.0.0.1:8554/unicast
 #                           http://127.0.0.1/movie.m3u8
 
-# streaming camera
+# streaming camera for cis camera module v1.3
 # wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_camera_rtsp.sh && bash install_camera_rtsp.sh ;
 # python detect.py --source rtsp://127.0.0.1:8554/unicast ;
