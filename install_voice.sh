@@ -4,7 +4,9 @@
 
 sudo apt update ;
 sudo apt install -y open-jtalk ;
-sudo apt install -y open-jtalk-mecab-naist-jdic hts-voice-nitech-jp-atr503-m00 ;
+sudo apt install -y open-jtalk-mecab-naist-jdic hts-voice-nitech-jp-atr503-m001 ;
+
+cd ;
 
 # echo
 echo "こんにちは" | open_jtalk \
@@ -27,8 +29,8 @@ aplay hello2.wav ;
 cd ;
 wget https://sourceforge.net/projects/mmdagent/files/MMDAgent_Example/MMDAgent_Example-1.7/MMDAgent_Example-1.7.zip ;
 unzip ./MMDAgent_Example-1.7.zip ;
-cp -r ./MMDAgent_Example-1.7/Voice/mei/ /usr/share/hts-voice/ ;
-echo "テスト用です" | open_jtalk \
+sudo cp -r ./MMDAgent_Example-1.7/Voice/mei/ /usr/share/hts-voice/ ;
+echo "女性用ボイスのテストです" | open_jtalk \
   -m /usr/share/hts-voice/mei/mei_normal.htsvoice \
   -x /var/lib/mecab/dic/open-jtalk/naist-jdic \
   -ow hello3.wav ;
