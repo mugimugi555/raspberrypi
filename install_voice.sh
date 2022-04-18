@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_voice.sh && bash install_voice.sh ;
+
 sudo apt update ;
 sudo apt install -y open-jtalk ;
 sudo apt install -y open-jtalk-mecab-naist-jdic hts-voice-nitech-jp-atr503-m00 ;
