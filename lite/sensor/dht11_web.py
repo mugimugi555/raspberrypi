@@ -4,17 +4,22 @@ from bottle import route, run
 from bottle import response
 
 import json
-
+import datetime
 import Adafruit_DHT
-sensor = Adafruit_DHT.DHT11
 
+t_delta = datetime.timedelta(hours=9)
+JST = datetime.timezone(t_delta, 'JST')
+now = datetime.datetime.now(JST)
+datetime = now.strftime('%Y-%m-%d %H:%M:%S')
+
+sensor = Adafruit_DHT.DHT11
 pin = 14
 
 @route("/")
 def books_list():
 
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-    books =  {'humidity': humidity, 'temperature': temperature}
+    books =  {'humidity': humidity, 'temperature': temperature, 'datetime': datetime}
 
     response.headers['Content-Type']  = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
