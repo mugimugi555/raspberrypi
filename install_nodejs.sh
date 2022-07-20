@@ -14,5 +14,5 @@ sudo npm install -g yarn ;
 sudo apt autoremove -y ;
 
 node -v ;
-npm -v ;
+npm  -v ;
 yarn -v ;
