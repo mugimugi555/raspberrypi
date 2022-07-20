@@ -10,8 +10,9 @@ sudo npm install n -g ;
 sudo n stable ;
 sudo apt purge -y nodejs npm ;
 
-npm install yarn ;
+sudo npm install -g yarn ;
 sudo apt autoremove -y ;
 
 node -v ;
+npm -v ;
 yarn -v ;
