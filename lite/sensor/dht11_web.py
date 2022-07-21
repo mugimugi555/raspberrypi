@@ -23,9 +23,9 @@ def sensor_result():
 
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     #0.81×気温+0.01×相対湿度（0.99×気温-14.3）+46.3
-    comfort = 100 - 0.81 * temperature + 0.01 * humidity * ( 0.99 * temperature - 14.3 ) + 46.3
-    myjson = { 'humidity' : humidity , 'temperature' : temperature , 'datetime' : datetime , 'comfort' : comfort }
-
+    uncomfort = int( 100 - 0.81 * temperature + 0.01 * humidity * ( 0.99 * temperature - 14.3 ) + 46.3 )
+    myjson = { 'humidity' : humidity , 'temperature' : temperature , 'datetime' : datetime , 'uncomfort' : uncomfort }
+    
     response.headers['Content-Type']  = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
     return json.dumps( myjson )
