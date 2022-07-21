@@ -19,15 +19,15 @@ pin    = 14
 
 #
 @route("/")
-def books_list():
+def sensor_result():
 
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     #0.81×気温+0.01×相対湿度（0.99×気温-14.3）+46.3
     comfort = 100 - 0.81 * temperature + 0.01 * humidity * ( 0.99 * temperature - 14.3 ) + 46.3
-    return_json = { 'humidity' : humidity , 'temperature' : temperature , 'datetime' : datetime , 'comfort' : comfort }
+    myjson = { 'humidity' : humidity , 'temperature' : temperature , 'datetime' : datetime , 'comfort' : comfort }
 
     response.headers['Content-Type']  = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
-    return json.dumps( return_json )
+    return json.dumps( myjson )
 
 run (host='0.0.0.0', port=8081, debug=True, reloader=True)
