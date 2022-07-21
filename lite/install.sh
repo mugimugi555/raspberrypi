@@ -35,8 +35,8 @@ sudo /usr/sbin/update-locale LANG=ja_JP.UTF-8 ;
 #-----------------------------------------------------------------------------------------------------------------------
 # swap
 #-----------------------------------------------------------------------------------------------------------------------
-sudo echo "CONF_SWAPSIZE=1024" | sudo tee /etc/dphys-swapfile ;
-sudo /etc/init.d/dphys-swapfile restart ;
+#sudo echo "CONF_SWAPSIZE=1024" | sudo tee /etc/dphys-swapfile ;
+3sudo /etc/init.d/dphys-swapfile restart ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # software
