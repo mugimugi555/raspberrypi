@@ -18,3 +18,6 @@ sudo dphys-swapfile uninstall ;
 sudo echo "CONF_SWAPSIZE=0" > /etc/dphys-swapfile ;
 sudo rm /etc/dphys-swapfile ;
 sudo chmod -x /etc/init.d/dphys-swapfile ;
+
+#
+sudo reboot now ;
