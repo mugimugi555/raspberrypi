@@ -5,8 +5,11 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # install omxplayer player
 #-----------------------------------------------------------------------------------------------------------------------
-
-wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_omxplayer.sh && bash install_omxplayer.sh ;
+if ! [ -x "$(command -v omxplayer)" ]; then
+  cd ;
+  wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_omxplayer.sh ;
+  bash install_omxplayer.sh ;
+fi
 
 #-----------------------------------------------------------------------------------------------------------------------
 # install youtube dl
