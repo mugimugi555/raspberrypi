@@ -25,7 +25,7 @@ mv Nj9AoKzhe3U.mp3 ~/Music/bgm.mp3 ;
 STARTUP_SHELL=$(cat<<TEXT
 #!/usr/bin/bash
 
-mpg123 -o l -Z /home/$USER/Music/bgm.mp3
+mpg123 -o l -Z $HOME/Music/bgm.mp3
 
 TEXT
 )
