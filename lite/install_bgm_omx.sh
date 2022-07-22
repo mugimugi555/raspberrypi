@@ -6,6 +6,7 @@
 # install music player
 #-----------------------------------------------------------------------------------------------------------------------
 
+wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_omxplayer.sh && bash install_omxplayer.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # install youtube dl
