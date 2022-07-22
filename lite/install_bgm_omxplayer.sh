@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 
-# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_bgm_omx.sh && bash install_bgm_omx.sh ;
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_bgm_omxplayer.sh && bash install_bgm_omxplayer.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# install music player
+# install omxplayer player
 #-----------------------------------------------------------------------------------------------------------------------
 
 wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_omxplayer.sh && bash install_omxplayer.sh ;
