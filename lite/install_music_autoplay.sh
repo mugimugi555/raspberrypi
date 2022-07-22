@@ -28,7 +28,11 @@ mv Nj9AoKzhe3U.mp3 ~/Music/autoplay.mp3 ;
 # create os start run file
 OS_START_RUN_SHELL=$(cat<<TEXT
 #!/usr/bin/bash
+
 play -q -v 0.3 /home/$USER/Music/autoplay.mp3 repeat 99999 &
+
+# omxplayer --vol -2000 -p -o local --loop /home/$USER/Music/autoplay.mp3 &
+
 TEXT
 )
 echo "$OS_START_RUN_SHELL" > ~/.os_start_run.sh ;
