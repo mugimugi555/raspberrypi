@@ -50,10 +50,10 @@ Description=Execute at OS startup and terminates
 After=network.target
 [Service]
 Type=oneshot
+ExecStartPre=
 ExecStart=/home/$USER/.os_start_run.sh
 ExecStop=/home/$USER/.os_end_run.sh
 RemainAfterExit=true
-ExecStartPre=/bin/sleep 60
 [Install]
 WantedBy=multi-user.target
 TEXT
