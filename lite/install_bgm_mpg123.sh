@@ -24,7 +24,7 @@ mv Nj9AoKzhe3U.mp3 ~/Music/bgm.mp3 ;
 # create os start run file
 STARTUP_SHELL=$(cat<<TEXT
 #!/usr/bin/bash
-mpg123 -Z /home/$USER/Music/bgm.mp3 &
+mpg123 -Z /home/$USER/Music/bgm.mp3
 TEXT
 )
 echo "$STARTUP_SHELL" > ~/.startup.sh ;
@@ -40,7 +40,7 @@ After=network.target
 [Service]
 Type=oneshot
 ExecStartPre=
-ExecStart=/home/$USER/.startup.sh
+ExecStart=/usr/bin/bash /home/$USER/.startup.sh
 ExecStop=
 RemainAfterExit=true
 [Install]
