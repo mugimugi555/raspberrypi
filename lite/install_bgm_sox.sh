@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_music_autoplay.sh && bash install_music_autoplay.sh ;
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_bgm_sox.sh && bash install_bgm_sox.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # install music player
