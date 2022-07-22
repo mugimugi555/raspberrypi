@@ -7,8 +7,8 @@
 #-----------------------------------------------------------------------------------------------------------------------
 echo 'Defaults timestamp_timeout = 1200' | sudo EDITOR='tee -a' visudo ;
 
-sudo cp /etc/apt/sources.list /etc/apt/sources.list.back ;
-echo "deb http://ftp.jaist.ac.jp/raspbian $(lsb_release -sc) main contrib non-free rpi" | sudo tee /etc/apt/sources.list ;
+#sudo cp /etc/apt/sources.list /etc/apt/sources.list.back ;
+#echo "deb http://ftp.jaist.ac.jp/raspbian $(lsb_release -sc) main contrib non-free rpi" | sudo tee /etc/apt/sources.list ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # config
