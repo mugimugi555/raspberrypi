@@ -22,12 +22,12 @@ mv Nj9AoKzhe3U.mp3 ~/Music/bgm.mp3 ;
 #-----------------------------------------------------------------------------------------------------------------------
 
 # create os start run file
-OS_START_RUN_SHELL=$(cat<<TEXT
+STARTUP_SHELL=$(cat<<TEXT
 #!/usr/bin/bash
 mpg123 -Z /home/$USER/Music/bgm.mp3 &
 TEXT
 )
-echo "$OS_START_RUN_SHELL" > ~/.startup.sh ;
+echo "$STARTUP_SHELL" > ~/.startup.sh ;
 
 # add permission
 chmod +x ~/.startup.sh ;
