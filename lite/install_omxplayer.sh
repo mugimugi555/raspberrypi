@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_omxplayer.sh && bash install_omxplayer.sh ;
+
 #https://www.snowinnovember.info/archives/20220319-raspberry-pi-omxplayer.html
 
 curl -O https://archive.raspberrypi.org/debian/pool/main/o/omxplayer/omxplayer_20190723+gitf543a0d-1+bullseye_armhf.deb ;
