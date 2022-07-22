@@ -1,3 +1,7 @@
+#!/usr/ban/bash
+
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_remove_swapservice.sh && bash install_remove_swapservice.sh ;
+
 sudo sync
 sudo swapoff -a
 sudo apt-get purge -y dphys-swapfile
