@@ -13,7 +13,7 @@ sudo raspi-config nonint do_legacy 0 ;
 # sudo dietpi-config ;
 # enable camera DietPi-Config/Display Options/
 # echo 'camera_auto_detect=1' | sudo tee -a /boot/config.txt ;
-# sudo apt install -y libcamera-apps-lite ;
+# sudo apt install -y libcamera-apps-lite libraspberrypi-dev ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # install library
