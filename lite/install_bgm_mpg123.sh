@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_bgm_mpg123.sh && bash install_bgm_mpg123.sh ;
+
 sudo echo ;
 sudo apt update ;
 sudo apt install -y mpg123 ;
