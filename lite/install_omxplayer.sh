@@ -4,6 +4,7 @@
 
 #https://www.snowinnovember.info/archives/20220319-raspberry-pi-omxplayer.html
 
+cd ;
 curl -O https://archive.raspberrypi.org/debian/pool/main/o/omxplayer/omxplayer_20190723+gitf543a0d-1+bullseye_armhf.deb ;
 sudo apt install -y ./omxplayer_20190723+gitf543a0d-1+bullseye_armhf.deb ;
 
