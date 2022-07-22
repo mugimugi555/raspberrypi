@@ -39,6 +39,8 @@ sudo make install ;
 #-----------------------------------------------------------------------------------------------------------------------
 # add service
 #-----------------------------------------------------------------------------------------------------------------------
+#ExecStart=/usr/local/bin/mjpg_streamer -o "output_http.so -w /usr/local/share/mjpg-streamer/www" -i 'input_uvc.so -d /dev/video0'
+
 MJPG_STREAMER=$(cat<<TEXT
 [Unit]
 Description=mjpgstreamer web streaming server
