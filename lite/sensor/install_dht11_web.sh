@@ -42,6 +42,7 @@ Type=simple
 User=root
 Group=root
 Restart=always
+ExecStartPre=/bin/sleep 60
 [Install]
 WantedBy=multi-user.target
 TEXT
