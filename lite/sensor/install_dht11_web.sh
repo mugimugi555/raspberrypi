@@ -37,7 +37,7 @@ Description=sensor dht11 web server
 After=network.target
 [Service]
 ExecStartPre=
-ExecStart=/usr/bin/python /home/$USER/dht11_web.py
+ExecStart=/usr/bin/python $HOME/dht11_web.py
 Type=simple
 User=root
 Group=root
