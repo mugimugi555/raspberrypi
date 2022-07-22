@@ -41,7 +41,7 @@ Description=Execute at OS startup and terminates
 After=network.target
 [Service]
 ExecStartPre=
-ExecStart=/usr/bin/bash /home/$USER/.startup.sh
+ExecStart=/usr/bin/bash $HOME/.startup.sh
 ExecStop=
 Type=simple
 User=$USER
