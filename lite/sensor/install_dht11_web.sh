@@ -36,7 +36,7 @@ DHT11_SERVICE=$(cat<<TEXT
 Description=sensor dht11 web server
 After=network.target
 [Service]
-ExecStartPre=/bin/sleep 2m
+ExecStartPre=
 ExecStart=/usr/bin/python /home/$USER/dht11_web.py
 Type=simple
 User=root
