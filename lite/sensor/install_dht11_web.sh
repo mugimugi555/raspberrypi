@@ -6,7 +6,7 @@
 # install python3 pip
 #-----------------------------------------------------------------------------------------------------------------------
 sudo apt update ;
-sudo apt install -y git python3-dev python3-pip ;
+sudo apt install -y git python3-dev python-is-python3 python3-pip ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # install DHT
