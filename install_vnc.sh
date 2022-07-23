@@ -7,6 +7,7 @@ sudo echo ;
 #-----------------------------------------------------------------------------------------------------------------------
 # install vnc server for ubuntu remmina
 #-----------------------------------------------------------------------------------------------------------------------
+# https://docs.linuxconsulting.mn.it/notes/remmina-vnc-raspberry
 
 sudo raspi-config nonint do_vnc 0 ;
 sudo vncpasswd -service ;
