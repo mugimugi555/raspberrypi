@@ -1,8 +1,6 @@
 #!/usr/bin/bash
 
-exit;
-
-# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/lite/install_bgm.sh && bash install_bgm.sh ;
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/dietpi/install_bgm.sh && bash install_bgm.sh ;
 
 sudo echo ;
 sudo apt update ;
@@ -15,7 +13,10 @@ sudo apt install -y mpg123 ;
 # create os start run file
 STARTUP_SHELL=$(cat<<TEXT
 #!/usr/bin/bash
-mpg123 -o l -Z $HOME/Music/bgm.mp3
+
+wget http://IPADDRESS/bgm.mp3 -O /tmp/bgm.mp3
+mpg123 -o l -Z /tmp/bgm.mp3
+
 TEXT
 )
 echo "$STARTUP_SHELL" > ~/.startup.sh ;
