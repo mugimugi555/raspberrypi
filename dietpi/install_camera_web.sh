@@ -6,7 +6,7 @@
 # enable legacy camera ( 0 is on )
 #-----------------------------------------------------------------------------------------------------------------------
 
-sudo dietpi-config ;
+dietpi-config ;
 # enable camera DietPi-Config/Display Options/
 
 # https://raw.githubusercontent.com/MichaIng/DietPi/dev/dietpi/dietpi-software
