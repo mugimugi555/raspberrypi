@@ -9,6 +9,7 @@
 sudo dietpi-config ;
 # enable camera DietPi-Config/Display Options/
 
+# https://raw.githubusercontent.com/MichaIng/DietPi/dev/dietpi/dietpi-software
 dietpi-software install 137 ; # mjpg-stream
 
 #echo 'camera_auto_detect=1' | sudo tee -a /boot/config.txt ;
