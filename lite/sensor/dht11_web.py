@@ -3,9 +3,13 @@
 from bottle import route, run
 from bottle import response
 
-import json
-import datetime
 import Adafruit_DHT
+import os
+import datetime
+import json
+
+#
+hostname = '%s' % os.uname()[1]
 
 #
 t_delta  = datetime.timedelta(hours=9)
@@ -24,8 +28,8 @@ def sensor_result():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     #0.81×気温+0.01×相対湿度（0.99×気温-14.3）+46.3
     uncomfort = int( 0.81 * temperature + 0.01 * humidity * ( 0.99 * temperature - 14.3 ) + 46.3 )
-    myjson = { 'humidity' : humidity , 'temperature' : temperature , 'datetime' : datetime , 'uncomfort' : uncomfort }
-    
+    myjson = { 'hostname' : hostname , 'humidity' : humidity , 'temperature' : temperature , 'datetime' : datetime , 'uncomfort' : uncomfort }
+
     response.headers['Content-Type']  = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
     return json.dumps( myjson )
