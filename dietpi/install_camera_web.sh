@@ -9,6 +9,8 @@
 sudo dietpi-config ;
 # enable camera DietPi-Config/Display Options/
 
+dietpi-software install 137 ; # mjpg-stream
+
 #echo 'camera_auto_detect=1' | sudo tee -a /boot/config.txt ;
 #sudo apt install -y libcamera-apps-lite libraspberrypi-dev ;
 
