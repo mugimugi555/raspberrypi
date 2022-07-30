@@ -15,4 +15,11 @@ dietpi-software install 137 ; # mjpg-stream
 #echo 'camera_auto_detect=1' | sudo tee -a /boot/config.txt ;
 #sudo apt install -y libcamera-apps-lite libraspberrypi-dev ;
 
-# http://IPADDRESS:8082/?action=stream
+#-----------------------------------------------------------------------------------------------------------------------
+# finish
+#-----------------------------------------------------------------------------------------------------------------------
+LOCAL_IPADDRESS=`hostname -I | awk -F" " '{print $1}'` ;
+echo "======================================" ;
+echo "visit =>" ;
+echo "http://$LOCAL_IPADDRESS:8022/?action=stream" ;
+echo "======================================" ;
