@@ -9,6 +9,8 @@
 sudo dietpi-config
 # enable camera DietPi-Config/Display Options/
 
+# install mjpg-stream by number
+# https://raw.githubusercontent.com/MichaIng/DietPi/dev/dietpi/dietpi-software
 dietpi-software install 137 ; # mjpg-stream
 
 #-----------------------------------------------------------------------------------------------------------------------
