@@ -25,5 +25,5 @@ dietpi-software install 137 ; # mjpg-stream
 LOCAL_IPADDRESS=`hostname -I | awk -F" " '{print $1}'` ;
 echo "======================================" ;
 echo "visit =>" ;
-echo "http://$LOCAL_IPADDRESS:8022/?action=stream" ;
+echo "http://$LOCAL_IPADDRESS:8082/?action=stream" ;
 echo "======================================" ;
