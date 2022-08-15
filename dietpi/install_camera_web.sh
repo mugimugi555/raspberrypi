@@ -17,7 +17,7 @@ dietpi-software install 137 ; # mjpg-stream
 # setting for camera v1.3
 #-----------------------------------------------------------------------------------------------------------------------
 # nano /etc/systemd/system/mjpg-streamer.service
-# replace lib_raspicam.so -> lib_uvc.so
+# replace input_raspicam.so -> input_uvc.so
 
 #-----------------------------------------------------------------------------------------------------------------------
 # finish
