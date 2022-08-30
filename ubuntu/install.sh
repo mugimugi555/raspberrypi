@@ -1,11 +1,6 @@
 #!/bin/bash
 
-# wget https://raw.githubusercontent.com/mugimugi555/ubuntu/main/install.sh && bash install.sh ;
-#
-# or save and edit file
-#
-# wget https://raw.githubusercontent.com/mugimugi555/ubuntu/main/install.sh && gedit install.sh ;
-# bash install.sh ;
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/ubuntu/install.sh && bash install.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # home jp 2 english
@@ -77,18 +72,9 @@ sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/you
 sudo chmod a+rx /usr/local/bin/youtube-dl ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# jless
-#-----------------------------------------------------------------------------------------------------------------------
-# curl -OL https://github.com/PaulJuliusMartinez/jless/releases/download/v0.7.1/jless-v0.7.1-x86_64-unknown-linux-gnu.zip ;
-# unzip jless-v0.7.1-x86_64-unknown-linux-gnu.zip
-# ./jless data.json
-# sudo mv jless /usr/local/bin/jless
-
-#-----------------------------------------------------------------------------------------------------------------------
 # chrome
 #-----------------------------------------------------------------------------------------------------------------------
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O google-chrome-stable_current_amd64.deb ;
-sudo sudo apt install -y ./google-chrome-stable_current_amd64.deb ;
+sudo apt install chromium-browser
 
 #-----------------------------------------------------------------------------------------------------------------------
 # remote desktop
