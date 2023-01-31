@@ -3,19 +3,15 @@
 # wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/install_wifi_rtl8188.sh && bash install_wifi_rtl8188.sh ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# update firmware fixed version
+# install rtl8188 driver
 #-----------------------------------------------------------------------------------------------------------------------
-sudo rpi-update dc6dc9bc6692d808fcce5ace9d6209d33d5afbac ;
 
-#-----------------------------------------------------------------------------------------------------------------------
-# download install shell and exec
-#-----------------------------------------------------------------------------------------------------------------------
-wget https://raw.githubusercontent.com/UedaTakeyuki/gc_setups/master/rtl8188.setup.sh && bash rtl8188.setup.sh ;
-
-#-----------------------------------------------------------------------------------------------------------------------
-# finish
-#-----------------------------------------------------------------------------------------------------------------------
-sudo reboot now ;
+cd  ;
+sudo apt install raspberrypi-kernel-headers ;
+sudo apt-get install build-essential git dkms ; # linux-headers-$(uname -r) ;
+git clone https://github.com/kelebek333/rtl8188fu ;
+sudo dkms install ./rtl8188fu ;
+sudo cp ./rtl8188fu/firmware/rtl8188fufw.bin /lib/firmware/rtlwifi/ ;
 
 #sudo iwlist wlan0 scan | grep ESSID ;
 #sudo nano /etc/wpa_supplicant/wpa_supplicant.conf ;
@@ -23,4 +19,3 @@ sudo reboot now ;
 #    ssid="SSID"
 #    psk="pass"
 #}
-# sudo reboot now
