@@ -52,6 +52,7 @@ export LANG=ja_JP.utf8 ;
 export LC_ALL=ja_JP.utf8 ;
 sudo locale-gen ja_JP.UTF-8 ;
 sudo /usr/sbin/update-locale LANG=ja_JP.UTF-8 ;
+LC_ALL=C xdg-user-dirs-update --force ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # swap
