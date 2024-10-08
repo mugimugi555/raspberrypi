@@ -129,8 +129,10 @@ echo "$MYKEYBOARD" | sudo tee /usr/share/ibus/component/mozc.xml ;
 #-----------------------------------------------------------------------------------------------------------------------
 MYALIAS=$(cat<<TEXT
 
-alias a="axel -a -n 5"
+# myalias
+alias a="axel -a -n 10"
 alias u='unar'
+alias up='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
 
 TEXT
 )
