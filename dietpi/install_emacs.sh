@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo dietpi-software install 18 ; # memacs
+
 # .emacs.d/init.el ファイルパス
 INIT_EL="$HOME/.emacs.d/init.el"
 
