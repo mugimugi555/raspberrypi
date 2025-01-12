@@ -98,7 +98,11 @@ sudo docker-compose up -d || { echo "EPGStationの起動に失敗しました。
 # チャンネルのスキャン
 #-----------------------------------------------------------------------------------------------------------------------
 
-# curl -X PUT "http://localhost:40772/api/config/channels/scan"
+# 初期のチャンネルを一旦全削除
+curl -X PUT "http://localhost:40772/api/config/channels" -H "Content-Type: application/json" -d "[]"
+
+# チャンネルスキャン開始（１０分程度）
+curl -X PUT "http://localhost:40772/api/config/channels/scan"
 
 #-----------------------------------------------------------------------------------------------------------------------
 # finish
