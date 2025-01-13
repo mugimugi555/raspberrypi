@@ -7,7 +7,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 
 sudo apt update
-sudo apt install -y curl unzip git
+sudo apt install -y curl unzip git jq
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Dockerのインストール
@@ -103,6 +103,54 @@ curl -X PUT "http://localhost:40772/api/config/channels" -H "Content-Type: appli
 
 # チャンネルスキャン開始（１０分程度）
 curl -X PUT "http://localhost:40772/api/config/channels/scan"
+
+#-----------------------------------------------------------------------------------------------------------------------
+# VLC用のプレイリストファイルの作成
+#-----------------------------------------------------------------------------------------------------------------------
+
+# Mirakurun APIのURL
+MIRAKURUN_URL="http://localhost:40772/api/config/channels"
+
+# 出力するM3Uファイル
+OUTPUT_M3U="vlc_channels.m3u"
+
+# システムのIPアドレスを取得
+IP_ADDRESS=$(hostname -I | awk '{print $1}')
+
+if [ -z "$IP_ADDRESS" ]; then
+    echo "IPアドレスが取得できませんでした。"
+    exit 1
+fi
+
+echo "IPアドレス: $IP_ADDRESS"
+
+# M3Uファイルのヘッダーを書き込み
+echo "#EXTM3U" > "$OUTPUT_M3U"
+echo "#EXTVLCOPT:network-caching=1000" >> "$OUTPUT_M3U"
+
+# Mirakurunからチャンネル情報を取得して処理
+curl -s "$MIRAKURUN_URL" | jq -c '.[]' | while read -r channel; do
+    # チャンネル情報の抽出
+    NAME=$(echo "$channel" | jq -r '.name')
+    TYPE=$(echo "$channel" | jq -r '.type')
+    CHANNEL=$(echo "$channel" | jq -r '.channel')
+    IS_DISABLED=$(echo "$channel" | jq -r '.isDisabled')
+
+    # 無効化されているチャンネルはスキップ
+    if [ "$IS_DISABLED" = "true" ]; then
+        continue
+    fi
+
+    # ストリームURLの生成
+    STREAM_URL="http://${IP_ADDRESS}:40772/api/channels/${TYPE}/${CHANNEL}/stream/"
+
+    # M3Uフォーマットに追加
+    echo "#EXTINF:-1,地上波 - $NAME" >> "$OUTPUT_M3U"
+    echo "$STREAM_URL" >> "$OUTPUT_M3U"
+done
+
+# 完了メッセージ
+echo "M3Uファイルが作成されました: $OUTPUT_M3U"
 
 #-----------------------------------------------------------------------------------------------------------------------
 # finish
