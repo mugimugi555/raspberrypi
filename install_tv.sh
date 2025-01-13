@@ -140,9 +140,9 @@ echo "#EXTVLCOPT:network-caching=1000" >> "$OUTPUT_M3U"
 # Mirakurunからチャンネル情報を取得して処理
 curl -s "$MIRAKURUN_URL" | jq -c '.[]' | while read -r channel; do
     # チャンネル情報の抽出
-    NAME=$(echo "$channel" | jq -r '.name')
-    TYPE=$(echo "$channel" | jq -r '.type')
-    CHANNEL=$(echo "$channel" | jq -r '.channel')
+    NAME=$(echo        "$channel" | jq -r '.name'      )
+    TYPE=$(echo        "$channel" | jq -r '.type'      )
+    CHANNEL=$(echo     "$channel" | jq -r '.channel'   )
     IS_DISABLED=$(echo "$channel" | jq -r '.isDisabled')
 
     # 無効化されているチャンネルはスキップ
