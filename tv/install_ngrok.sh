@@ -1,15 +1,70 @@
+#!/bin/bash
+
+# ===============================================
+# 外出先から番組予約を可能にするためのngrok設定スクリプト
+# ===============================================
+
+# wgetでこのスクリプトを取得して実行できます:
+# wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/main/tv/install_ngrok.sh && bash install_ngrok.sh
 
 #-----------------------------------------------------------------------------------------------------------------------
-# 番組予約を外出先から行う
+# 必要なツールのインストール
 #-----------------------------------------------------------------------------------------------------------------------
 
-# ngrokのインストール（公式サイトからダウンロード）
-curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && \
-echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && \
-sudo apt update && sudo apt install ngrok
+# ngrokの公式リポジトリを追加してインストール
+curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
+echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list
+sudo apt update
+sudo apt install -y ngrok || { echo "ngrokのインストールに失敗しました。"; exit 1; }
 
-# トークンを登録（ngrokのサイトでアカウント作成が必要）
-ngrok config add-authtoken [あなたのauthtoken]
+#-----------------------------------------------------------------------------------------------------------------------
+# APIキーの入力を促す
+#-----------------------------------------------------------------------------------------------------------------------
 
-# トンネルの起動（動作の確認。URLは毎回変わります）
-ngrok http 8888
+echo "ngrokのインストールが完了しました。"
+echo "次のステップとして、ngrokの公式サイト (https://dashboard.ngrok.com/) にアクセスしてアカウントを作成し、APIキー (Authtoken) を取得してください。"
+echo
+read -p "ここに取得したAPIキーを入力してください: " NGROK_TOKEN
+
+# 入力が空の場合の処理
+if [ -z "$NGROK_TOKEN" ]; then
+    echo "APIキーが入力されませんでした。スクリプトを終了します。"
+    exit 1
+fi
+
+# APIキーをngrokに登録
+ngrok config add-authtoken "$NGROK_TOKEN" || { echo "APIキーの登録に失敗しました。"; exit 1; }
+
+#-----------------------------------------------------------------------------------------------------------------------
+# 動作確認
+#-----------------------------------------------------------------------------------------------------------------------
+
+echo "APIキーが正常に登録されました。"
+echo "次に、トンネルを起動して外部アクセス用のURLを取得します。"
+echo "このプロセスにはポート8888が使用されます。"
+
+# ngrokを使用してトンネルを起動（バックグラウンドで実行）
+ngrok http 8888 > /tmp/ngrok_log &
+
+# URLを取得するために少し待つ
+sleep 5
+
+# ngrokのステータスから外部アクセス用URLを抽出
+NGROK_URL=$(curl -s http://127.0.0.1:4040/api/tunnels | jq -r '.tunnels[0].public_url')
+
+if [ -z "$NGROK_URL" ]; then
+    echo "トンネルURLの取得に失敗しました。"
+    exit 1
+fi
+
+echo "外部アクセス用のURLが生成されました:"
+echo "$NGROK_URL"
+
+#-----------------------------------------------------------------------------------------------------------------------
+# 完了メッセージ
+#-----------------------------------------------------------------------------------------------------------------------
+
+echo "======================================"
+echo "外出先から以下のURLにアクセスして番組予約を行ってください:"
+echo "$NGROK_URL"
+echo "======================================"
