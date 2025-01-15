@@ -24,13 +24,16 @@ sudo apt install -y ngrok || { echo "ngrokのインストールに失敗しま�
 echo "ngrokのインストールが完了しました。"
 echo "次のステップとして、ngrokの公式サイト (https://dashboard.ngrok.com/) にアクセスしてアカウントを作成し、APIキー (Authtoken) を取得してください。"
 echo
-read -p "ここに取得したAPIキーを入力してください: " NGROK_TOKEN
 
-# 入力が空の場合の処理
-if [ -z "$NGROK_TOKEN" ]; then
-    echo "APIキーが入力されませんでした。スクリプトを終了します。"
-    exit 1
-fi
+# 無限ループで入力を要求
+while true; do
+    read -p "ここに取得したAPIキーを入力してください: " NGROK_TOKEN
+    if [ -n "$NGROK_TOKEN" ]; then
+        # 入力が空でない場合、ループを抜ける
+        break
+    fi
+    echo "APIキーが入力されていません。もう一度入力してください。"
+done
 
 # APIキーをngrokに登録
 ngrok config add-authtoken "$NGROK_TOKEN" || { echo "APIキーの登録に失敗しました。"; exit 1; }
