@@ -70,6 +70,37 @@ sudo i2cdetect -y 1
 - `0x44` → **SHT31（温湿度センサー）**
 - `0x76` → **BME280 または BMP280（温湿度＋気圧センサー）**
 
+## **センサーのシステムサービス化**
+
+各センサーの Flask Web サーバーを `systemd` によりサービスとして登録し、自動起動させることができます。
+
+### **サービスの登録方法**
+以下のスクリプトを実行すると、指定したセンサースクリプトを `systemd` サービスとして登録し、自動起動するようになります。
+
+```bash
+bash install_sensor_service.sh <センサースクリプト名>
+```
+
+例：
+```bash
+bash install_sensor_service.sh /home/pi/sensors/dht11.py
+```
+または
+```bash
+bash install_sensor_service.sh ~/custom_path/bme280.py
+```
+
+### **登録されたサービスの管理**
+
+| **コマンド** | **説明** |
+|-------------|---------------------------------|
+| `sudo systemctl status sensor_<センサー名>_server` | サービスの状態を確認 |
+| `sudo systemctl stop sensor_<センサー名>_server` | サービスを停止 |
+| `sudo systemctl start sensor_<センサー名>_server` | サービスを開始 |
+| `sudo systemctl restart sensor_<センサー名>_server` | サービスを再起動 |
+| `sudo systemctl disable sensor_<センサー名>_server` | 自動起動を無効化 |
+| `sudo systemctl enable sensor_<センサー名>_server` | 自動起動を有効化 |
+
 ## **サンプルプログラムの実行方法**
 各センサーのプログラムは、以下のように実行できます。
 
