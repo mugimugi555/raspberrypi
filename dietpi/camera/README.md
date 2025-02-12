@@ -118,4 +118,4 @@ sudo rm -rf /home/dietpi/timelapse/
 ## ライセンス
 MIT License
 
-![タイトル画像](assets/images/header.png)
+![タイトル画像](assets/images/footer.png)
