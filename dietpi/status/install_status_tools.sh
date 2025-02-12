@@ -2,32 +2,12 @@
 
 echo "Installing system monitoring tools on DietPi..."
 
-# 一時的に /boot/dietpi/ を PATH に追加
-export PATH=$PATH:/boot/dietpi
+# DietPi-Software コマンドのパスを変数化
+DIETPI_SOFTWARE_CMD="sudo /boot/dietpi/dietpi-software install"
 
-# DietPi Dashboard
-echo "Installing DietPi Dashboard..."
-sudo dietpi-software install 200
-
-# Glances
-echo "Installing Glances..."
-sudo dietpi-software install 120
-
-# Netdata
-echo "Installing Netdata..."
-sudo dietpi-software install 157
-
-# htop
-echo "Installing htop..."
-sudo dietpi-software install 108
-
-# iftop
-echo "Installing iftop..."
-sudo dietpi-software install 121
-
-# nmon
-echo "Installing nmon..."
-sudo dietpi-software install 122
+# 監視ツールを一括インストール
+echo "Installing monitoring tools..."
+$DIETPI_SOFTWARE_CMD 200 120 157 108 121 122
 
 # Start and enable services
 echo "Enabling and starting services..."
