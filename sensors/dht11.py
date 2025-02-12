@@ -1,19 +1,20 @@
 import Adafruit_DHT
 import json
 import time
+import threading
 from flask import Flask, jsonify
 
 # pip3 install flask Adafruit_DHT
 
-# Raspberry Pi GPIO ピン配置（I2C 対応）
+# Raspberry Pi GPIO ピン配置（DHT11 接続）
 #
-#  Raspberry Pi  (GPIO)         I2C センサー（例: BME280）
-#  +----------------------+      +-----------+
-#  | 3.3V   | 5V          |      | [VCC]     |
-#  | GPIO2  | 5V          |      | [SDA]     |
-#  | GPIO3  | GND         |      | [SCL]     |
-#  | GPIO4  | TX (UART)   |      | [GND]     |
-#  | GND    | RX (UART)   |      +-----------+
+#  Raspberry Pi  (GPIO)           DHT11 センサー
+#  +----------------------+      +---------+
+#  | 3.3V   | 5V          |      | [VCC]   |
+#  | GPIO2  | 5V          |      |         |
+#  | GPIO3  | GND         |      | [GND]   |
+#  | GPIO4  | TX (UART)   |      | [DATA]  |
+#  | GND    | RX (UART)   |      +---------+
 #  | GPIO17 | GPIO18      |      
 #  | GPIO27 | GND         |      
 #  | GPIO22 | GPIO23      |      
@@ -31,18 +32,16 @@ from flask import Flask, jsonify
 #  | GND    | GPIO21      |      
 #  +----------------------+
 #
-# 【I2C 接続方法】
-# - Raspberry Pi の GPIO2 (SDA) を I2C センサーの SDA に接続
-# - Raspberry Pi の GPIO3 (SCL) を I2C センサーの SCL に接続
-# - Raspberry Pi の GND を I2C センサーの GND に接続
-# - Raspberry Pi の 3.3V または 5V を I2C センサーの VCC に接続（センサーの仕様に合わせる）
+# 【DHT11 接続方法】
+# - DHT11 の VCC → 5V
+# - DHT11 の GND → GND
+# - DHT11 の DATA → GPIO4
 
 app = Flask(__name__)
 
 # センサーと GPIO ピンの設定
 SENSOR = Adafruit_DHT.DHT11
 PIN = 4
-
 JSON_FILE = "/home/pi/sensors/dht11_data.json"
 
 def read_dht11():
@@ -77,8 +76,4 @@ if __name__ == "__main__":
     # JSON 書き込み用のスレッドを開始
     threading.Thread(target=save_to_json, daemon=True).start()
     # Flask サーバーを実行
-    app.run(host="0.0.0.0", port=5000, debug=False)
-    return jsonify(data)
-
-if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=False)
