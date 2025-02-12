@@ -4,27 +4,27 @@ echo "Installing system monitoring tools on DietPi..."
 
 # DietPi Dashboard
 echo "Installing DietPi Dashboard..."
-dietpi-software install 200
+sudo dietpi-software install 200
 
 # Glances
 echo "Installing Glances..."
-dietpi-software install 120
+sudo dietpi-software install 120
 
 # Netdata
 echo "Installing Netdata..."
-dietpi-software install 157
+sudo dietpi-software install 157
 
 # htop
 echo "Installing htop..."
-dietpi-software install 108
+sudo dietpi-software install 108
 
 # iftop
 echo "Installing iftop..."
-dietpi-software install 121
+sudo dietpi-software install 121
 
 # nmon
 echo "Installing nmon..."
-dietpi-software install 122
+sudo dietpi-software install 122
 
 # Start and enable services
 echo "Enabling and starting services..."
