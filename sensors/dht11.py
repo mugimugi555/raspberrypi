@@ -3,6 +3,8 @@ import json
 import time
 from flask import Flask, jsonify
 
+# pip3 install flask Adafruit_DHT
+
 # Raspberry Pi GPIO ピン配置（I2C 対応）
 #
 #  Raspberry Pi  (GPIO)         I2C センサー（例: BME280）
