@@ -2,6 +2,9 @@
 
 echo "Installing system monitoring tools on DietPi..."
 
+# 一時的に /boot/dietpi/ を PATH に追加
+export PATH=$PATH:/boot/dietpi
+
 # DietPi Dashboard
 echo "Installing DietPi Dashboard..."
 sudo dietpi-software install 200
