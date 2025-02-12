@@ -18,7 +18,7 @@
 以下のコマンドを実行して、セットアップスクリプトをダウンロード・実行してください。
 
 ```bash
-wget https://your-server.com/install_status_tools.sh
+wget https://raw.githubusercontent.com/mugimugi555/raspberrypi/refs/heads/main/dietpi/status/install_status_tools.sh
 bash install_status_tools.sh
 ```
 
