@@ -19,17 +19,17 @@
 ## カメラの接続確認
 カメラが接続されているか確認するには、以下のコマンドを実行してください。
 
-### **USB カメラの確認**
-```bash
-ls /dev/video*
-```
-カメラが正しく認識されていれば、`/dev/video0` などが表示されます。
-
 ### **Raspberry Pi カメラモジュール (MIPI CSI) の確認**
 ```bash
 vcgencmd get_camera
 ```
 `supported=1 detected=1` と表示されれば、カメラが正しく認識されています。
+
+### **USB カメラの確認**
+```bash
+ls /dev/video*
+```
+カメラが正しく認識されていれば、`/dev/video0` などが表示されます。
 
 ## インストール
 以下のコマンドを実行して、セットアップスクリプトをダウンロード・実行してください。
@@ -50,12 +50,6 @@ IP_ADDRESS=$(hostname -I | awk '{print $1}')
 HOSTNAME=$(hostname)
 echo "アクセス URL: http://$IP_ADDRESS:8080/?action=stream"
 echo "または http://$HOSTNAME:8080/?action=stream"
-```
-
-セットアップが完了したら、ブラウザで以下の URL にアクセスして映像を確認できます。
-
-```
-http://$(hostname -I | awk '{print $1}'):8080/?action=stream
 ```
 
 ## キャプチャした画像の確認
