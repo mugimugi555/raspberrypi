@@ -1,5 +1,7 @@
 # Raspberry Pi 向けセンサー一覧とサンプルコード
 
+![タイトル画像](assets/images/header.png)
+
 このプロジェクトでは、Raspberry Pi に接続可能なセンサーの一覧と、それぞれのサンプルプログラムを提供します。対象のセンサーは、GPIO（デジタル）または I2C に対応したものです。
 
 ## **対応センサーとプログラムファイル**
@@ -116,3 +118,4 @@ bash install_sensor_service.sh ~/custom_path/bme280.py
 ## **ライセンス**
 MIT License
 
+![タイトル画像](assets/images/footer.png)
