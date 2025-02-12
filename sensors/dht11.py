@@ -43,6 +43,8 @@ app = Flask(__name__)
 SENSOR = Adafruit_DHT.DHT11
 PIN = 4
 
+JSON_FILE = "/home/pi/sensors/dht11_data.json"
+
 def read_dht11():
     """DHT11 センサーから温度と湿度を取得し、辞書で返す"""
     humidity, temperature = Adafruit_DHT.read_retry(SENSOR, PIN)
@@ -53,10 +55,29 @@ def read_dht11():
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
     }
 
+def save_to_json():
+    """定期的に JSON ファイルにセンサーデータを書き込む"""
+    while True:
+        data = read_dht11()
+        try:
+            with open(JSON_FILE, "w") as f:
+                json.dump(data, f, ensure_ascii=False, indent=4)
+            print(f"Data saved: {data}")
+        except Exception as e:
+            print(f"Failed to write JSON: {e}")
+        time.sleep(10)  # 10秒ごとに更新
+
 @app.route("/")
 def index():
     """センサーのデータを JSON 形式で返す"""
     data = read_dht11()
+    return jsonify(data)
+
+if __name__ == "__main__":
+    # JSON 書き込み用のスレッドを開始
+    threading.Thread(target=save_to_json, daemon=True).start()
+    # Flask サーバーを実行
+    app.run(host="0.0.0.0", port=5000, debug=False)
     return jsonify(data)
 
 if __name__ == "__main__":
