@@ -17,18 +17,24 @@
 
 ## **環境構築**
 
-### **必要なパッケージのインストール（センサーごと）**
+### **共通で必要なパッケージのインストール**
+以下のコマンドで、共通で必要なライブラリをインストールしてください。
+
+```bash
+pip3 install flask smbus2
+```
+
+### **センサーごとの追加ライブラリ**
 
 | **センサー** | **必要な pip ライブラリ** |
 |--------------|-----------------------------------------------|
-| DHT11, DHT22 | `pip3 install Adafruit_DHT` |
-| SHT31 | `pip3 install smbus2` |
+| DHT11, DHT22 | `pip3 install RPi.GPIO Adafruit_DHT` |
+| SHT31 | `pip3 install adafruit-circuitpython-sht31d` |
 | BME280 | `pip3 install adafruit-circuitpython-bme280` |
-| BMP280 | `pip3 install smbus2` |
+| BMP280 | `pip3 install adafruit-circuitpython-bmp280` |
 | CCS811 | `pip3 install adafruit-circuitpython-ccs811` |
 | BH1750 | `pip3 install adafruit-circuitpython-bh1750` |
 | TSL2561 | `pip3 install adafruit-circuitpython-tsl2561` |
-| Flask Web API | `pip3 install flask` |
 
 ### **I2C の有効化**
 I2C センサーを使用する場合、Raspberry Pi の I2C を有効にする必要があります。
