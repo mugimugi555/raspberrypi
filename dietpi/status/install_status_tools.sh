@@ -1,13 +1,28 @@
 #!/bin/bash
 
-echo "Installing system monitoring tools on DietPi..."
+echo "Installing system monitoring tools on DietPi (CUI only)..."
 
 # DietPi-Software コマンドのパスを変数化
 DIETPI_SOFTWARE_CMD="sudo /boot/dietpi/dietpi-software install"
 
-# 監視ツールを一括インストール
-echo "Installing monitoring tools..."
-$DIETPI_SOFTWARE_CMD 200 120 157 108 121 122
+# 各ツールを個別にインストール (CUI のみ)
+echo "Installing DietPi Dashboard..."
+$DIETPI_SOFTWARE_CMD 200  # Web UI だが CUI で動作
+
+echo "Installing Glances (CUI only)..."
+$DIETPI_SOFTWARE_CMD 120
+
+echo "Installing Netdata (Web UI)..."
+$DIETPI_SOFTWARE_CMD 157  # Web UI
+
+echo "Installing htop..."
+$DIETPI_SOFTWARE_CMD 108
+
+echo "Installing iftop..."
+$DIETPI_SOFTWARE_CMD 121
+
+echo "Installing nmon..."
+$DIETPI_SOFTWARE_CMD 122
 
 # Start and enable services
 echo "Enabling and starting services..."
@@ -20,21 +35,21 @@ sudo systemctl start dietpi-dashboard
 sudo systemctl enable netdata
 sudo systemctl start netdata
 
-# Glances (Web Mode)
+# Glances (CUI)
 sudo systemctl enable glances
 sudo systemctl start glances
 
 # Display Access URLs
 IP_ADDR=$(hostname -I | awk '{print $1}')
 
-echo "Installation completed! You can access the monitoring tools using the following URLs:"
+echo "Installation completed! You can access the monitoring tools using the following methods:"
 echo "---------------------------------------------------------------"
-echo "DietPi Dashboard   : http://$IP_ADDR:5252"
-echo "Glances Web UI     : http://$IP_ADDR:61208"
-echo "Netdata Dashboard  : http://$IP_ADDR:19999"
+echo "DietPi Dashboard   : http://$IP_ADDR:5252 (Web UI)"
+echo "Glances Web UI     : Run 'glances' for CLI monitoring"
+echo "Netdata Dashboard  : http://$IP_ADDR:19999 (Web UI)"
 echo "---------------------------------------------------------------"
-echo "For CLI monitoring, use the following commands:"
+echo "For additional CLI monitoring, use the following commands:"
 echo "htop             : Run 'htop' in terminal"
 echo "iftop            : Run 'sudo iftop' in terminal"
 echo "nmon             : Run 'nmon' in terminal"
-echo "---------------------------------------------------------------"
+echo "---------------------------------------
