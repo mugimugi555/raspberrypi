@@ -1,5 +1,7 @@
-import smbus2
+import Adafruit_DHT
+import json
 import time
+from flask import Flask, jsonify
 
 # Raspberry Pi GPIO ピン配置（I2C 対応）
 #
@@ -33,24 +35,27 @@ import time
 # - Raspberry Pi の GND を I2C センサーの GND に接続
 # - Raspberry Pi の 3.3V または 5V を I2C センサーの VCC に接続（センサーの仕様に合わせる）
 
-# I2C アドレス（例: BME280）
-I2C_ADDR = 0x76  # 一般的な BME280 の I2C アドレス
+app = Flask(__name__)
 
-# I2C バスの初期化
-bus = smbus2.SMBus(1)
+# センサーと GPIO ピンの設定
+SENSOR = Adafruit_DHT.DHT11
+PIN = 4
 
-def read_sensor():
-    """I2C センサー（例: BME280）からデータを取得"""
-    try:
-        data = bus.read_i2c_block_data(I2C_ADDR, 0xD0, 1)  # デバイス ID 読み取り
-        print(f"Sensor ID: {data[0]}")
-    except Exception as e:
-        print(f"Failed to read sensor: {e}")
+def read_dht11():
+    """DHT11 センサーから温度と湿度を取得し、辞書で返す"""
+    humidity, temperature = Adafruit_DHT.read_retry(SENSOR, PIN)
+    return {
+        "temperature": temperature,
+        "humidity": humidity,
+        "unit": "Celsius",
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+    }
+
+@app.route("/")
+def index():
+    """センサーのデータを JSON 形式で返す"""
+    data = read_dht11()
+    return jsonify(data)
 
 if __name__ == "__main__":
-    try:
-        while True:
-            read_sensor()
-            time.sleep(2)  # 2秒ごとに測定
-    except KeyboardInterrupt:
-        print("\nScript terminated by user")
+    app.run(host="0.0.0.0", port=5000, debug=False)
