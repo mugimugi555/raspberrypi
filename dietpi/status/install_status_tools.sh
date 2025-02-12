@@ -3,26 +3,26 @@
 echo "Installing system monitoring tools on DietPi (CUI only)..."
 
 # DietPi-Software のディレクトリパスを変数化
-DIETPI_SOFTWARE_PATH="/boot/dietpi/"
+DIETPI_PATH="/boot/dietpi/"
 
 # 各ツールを個別にインストール (CUI のみ)
 echo "Installing DietPi Dashboard..."
-sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 200  # Web UI だが CUI で動作
+sudo "${DIETPI_PATH}dietpi-software" install 200  # Web UI だが CUI で動作
 
 echo "Installing Glances (CUI only)..."
-sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 120
+sudo "${DIETPI_PATH}dietpi-software" install 120
 
 echo "Installing Netdata (Web UI)..."
-sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 157  # Web UI
+sudo "${DIETPI_PATH}dietpi-software" install 157  # Web UI
 
 echo "Installing htop..."
-sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 108
+sudo "${DIETPI_PATH}dietpi-software" install 108
 
 echo "Installing iftop..."
-sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 121
+sudo "${DIETPI_PATH}dietpi-software" install 121
 
 echo "Installing nmon..."
-sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 122
+sudo "${DIETPI_PATH}dietpi-software" install 122
 
 # Start and enable services
 echo "Enabling and starting services..."

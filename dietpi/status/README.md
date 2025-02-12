@@ -1,5 +1,7 @@
 # DietPi ステータス監視ツールセットアップ
 
+![タイトル画像](assets/images/header.png)
+
 このプロジェクトでは、DietPi にシステム監視ツールをインストールし、システムの状態を Web または CLI から確認できる環境を構築します。
 
 ## **インストールされるツール**
@@ -95,3 +97,5 @@ sudo apt remove -y htop iftop nmon
 
 ## **ライセンス**
 MIT License
+
+![タイトル画像](assets/images/footer.png)
