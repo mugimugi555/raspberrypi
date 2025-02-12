@@ -69,6 +69,18 @@ sudo i2cdetect -y 1
 - `0x23` → **BH1750（照度センサー）**
 - `0x44` → **SHT31（温湿度センサー）**
 - `0x76` → **BME280 または BMP280（温湿度＋気圧センサー）**
+- 
+## **サンプルプログラムの実行方法**
+各センサーのプログラムは、以下のように実行できます。
+
+```bash
+python3 センサーファイル名.py
+```
+
+例：BME280 のサンプルを実行
+```bash
+python3 bme280.py
+```
 
 ## **センサーのシステムサービス化**
 
@@ -100,18 +112,6 @@ bash install_sensor_service.sh ~/custom_path/bme280.py
 | `sudo systemctl restart sensor_<センサー名>_server` | サービスを再起動 |
 | `sudo systemctl disable sensor_<センサー名>_server` | 自動起動を無効化 |
 | `sudo systemctl enable sensor_<センサー名>_server` | 自動起動を有効化 |
-
-## **サンプルプログラムの実行方法**
-各センサーのプログラムは、以下のように実行できます。
-
-```bash
-python3 センサーファイル名.py
-```
-
-例：BME280 のサンプルを実行
-```bash
-python3 bme280.py
-```
 
 ## **ライセンス**
 MIT License
