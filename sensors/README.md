@@ -4,7 +4,7 @@
 
 ## **対応センサーとプログラムファイル**
 
-| **センサー種別** | **センサー名** | **インターフェース** | **I2C アドレス** | **サンプルコードファイル** |
+| **センサー** | **型番** | **接続方法** | **I2C アドレス** | **ファイル** |
 |--------------|-------------|----------------|--------------|--------------------|
 | 温湿度センサー | DHT11 | GPIO | - | `dht11.py` |
 | 温湿度センサー | DHT22 (AM2302) | GPIO | - | `dht22.py` |
@@ -17,13 +17,18 @@
 
 ## **環境構築**
 
-### **必要なパッケージのインストール**
-以下のコマンドで、Python の必要なライブラリをインストールしてください。
+### **必要なパッケージのインストール（センサーごと）**
 
-```bash
-sudo apt update && sudo apt install -y python3 python3-pip
-pip3 install RPi.GPIO smbus2 Adafruit_DHT adafruit-circuitpython-bme280 adafruit-circuitpython-ccs811 adafruit-circuitpython-bh1750 adafruit-circuitpython-tsl2561
-```
+| **センサー** | **必要な pip ライブラリ** |
+|--------------|-----------------------------------------------|
+| DHT11, DHT22 | `pip3 install Adafruit_DHT` |
+| SHT31 | `pip3 install smbus2` |
+| BME280 | `pip3 install adafruit-circuitpython-bme280` |
+| BMP280 | `pip3 install smbus2` |
+| CCS811 | `pip3 install adafruit-circuitpython-ccs811` |
+| BH1750 | `pip3 install adafruit-circuitpython-bh1750` |
+| TSL2561 | `pip3 install adafruit-circuitpython-tsl2561` |
+| Flask Web API | `pip3 install flask` |
 
 ### **I2C の有効化**
 I2C センサーを使用する場合、Raspberry Pi の I2C を有効にする必要があります。
@@ -44,8 +49,8 @@ sudo i2cdetect -y 1
 **出力例:**
 ```
      0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F
-00:          -- -- -- -- -- -- -- -- -- -- -- -- --
-10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
 20: -- -- -- -- -- -- -- -- -- -- 23 -- -- -- -- --
 30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 40: -- -- 44 -- -- -- -- -- -- -- -- -- -- -- -- --
