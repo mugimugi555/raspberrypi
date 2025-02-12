@@ -2,27 +2,27 @@
 
 echo "Installing system monitoring tools on DietPi (CUI only)..."
 
-# DietPi-Software コマンドのパスを変数化
-DIETPI_SOFTWARE_CMD="sudo /boot/dietpi/dietpi-software install"
+# DietPi-Software のディレクトリパスを変数化
+DIETPI_SOFTWARE_PATH="/boot/dietpi/"
 
 # 各ツールを個別にインストール (CUI のみ)
 echo "Installing DietPi Dashboard..."
-$DIETPI_SOFTWARE_CMD 200  # Web UI だが CUI で動作
+sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 200  # Web UI だが CUI で動作
 
 echo "Installing Glances (CUI only)..."
-$DIETPI_SOFTWARE_CMD 120
+sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 120
 
 echo "Installing Netdata (Web UI)..."
-$DIETPI_SOFTWARE_CMD 157  # Web UI
+sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 157  # Web UI
 
 echo "Installing htop..."
-$DIETPI_SOFTWARE_CMD 108
+sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 108
 
 echo "Installing iftop..."
-$DIETPI_SOFTWARE_CMD 121
+sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 121
 
 echo "Installing nmon..."
-$DIETPI_SOFTWARE_CMD 122
+sudo "${DIETPI_SOFTWARE_PATH}dietpi-software" install 122
 
 # Start and enable services
 echo "Enabling and starting services..."
@@ -52,4 +52,4 @@ echo "For additional CLI monitoring, use the following commands:"
 echo "htop             : Run 'htop' in terminal"
 echo "iftop            : Run 'sudo iftop' in terminal"
 echo "nmon             : Run 'nmon' in terminal"
-echo "---------------------------------------
+echo "---------------------------------------------------------------"
