@@ -37,17 +37,6 @@ sudo apt install -y htop
 echo "Installing iftop (Network Bandwidth Usage Monitoring)..."
 sudo apt install -y iftop
 
-# Start and enable services
-echo "Enabling and starting services..."
-
-# DietPi Dashboard
-sudo systemctl enable dietpi-dashboard
-sudo systemctl start dietpi-dashboard
-
-# Netdata
-sudo systemctl enable netdata
-sudo systemctl start netdata
-
 # Display Access URLs
 IP_ADDR=$(hostname -I | awk '{print $1}')
 
