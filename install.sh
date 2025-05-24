@@ -29,7 +29,7 @@ echo "⚙️ Raspberry Pi 基本設定中..."
 sudo raspi-config nonint do_change_pass
 sudo raspi-config nonint do_vnc 0
 sudo raspi-config nonint do_camera 0
-sudo raspi-config nonint do_legacy 0
+#sudo raspi-config nonint do_legacy 0
 sudo raspi-config nonint do_i2c 0
 sudo raspi-config nonint do_ssh 0
 sudo raspi-config nonint do_spi 0
