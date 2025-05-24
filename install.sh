@@ -27,7 +27,6 @@ feh --bg-scale "$WALLPAPER_IMG" || true
 #---------------------------------------------
 echo "⚙️ Raspberry Pi 基本設定中..."
 sudo raspi-config nonint do_change_pass
-sudo raspi-config nonint do_vnc 0
 sudo raspi-config nonint do_camera 0
 #sudo raspi-config nonint do_legacy 0
 sudo raspi-config nonint do_i2c 0
@@ -36,6 +35,9 @@ sudo raspi-config nonint do_spi 0
 sudo raspi-config nonint do_wifi_country JP
 sudo raspi-config nonint do_change_locale ja_JP.UTF-8
 sudo raspi-config nonint do_change_timezone Asia/Tokyo
+
+sudo raspi-config nonint do_vnc 0
+sudo systemctl enable vncserver-x11-serviced.service
 
 #---------------------------------------------
 # 画面スリープ無効化 💤
