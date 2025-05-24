@@ -119,8 +119,8 @@ echo "✅ M3Uファイル作成完了: $OUTPUT_M3U"
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # ✅ 完了メッセージ
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-MY_HOST_NAME=$(hostname)
+MY_IP_ADDRESS=$(hostname -I | awk '{print $1}')
 echo "======================================"
-echo "📺 EPGStation => http://$MY_HOST_NAME.local:8888/"
-echo "🛰️  Mirakurun  => http://$MY_HOST_NAME.local:40772/"
+echo "📺 EPGStation => http://$MY_IP_ADDRESS:8888/"
+echo "🛰️  Mirakurun  => http://$MY_IP_ADDRESS:40772/"
 echo "======================================"
