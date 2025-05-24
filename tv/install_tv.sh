@@ -85,6 +85,35 @@ cd docker-mirakurun-epgstation || { echo "❌ セットアップディレクト�
 sudo docker-compose up -d || { echo "❌ EPGStation起動に失敗"; exit 1; }
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🛠️ systemd サービスを作成して自動起動対応
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo "🛠️ systemdサービスを作成中..."
+SERVICE_PATH="/etc/systemd/system/mirakurun-epgstation.service"
+sudo tee "$SERVICE_PATH" > /dev/null << EOF
+[Unit]
+Description=Mirakurun + EPGStation Docker Compose
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=simple
+WorkingDirectory=$HOME/docker-mirakurun-epgstation
+ExecStart=/usr/local/bin/docker-compose -f $HOME/docker-mirakurun-epgstation/docker-compose.yml up
+ExecStop=/usr/local/bin/docker-compose -f $HOME/docker-mirakurun-epgstation/docker-compose.yml down
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable mirakurun-epgstation.service
+sudo systemctl start mirakurun-epgstation.service
+
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 🔍 チャンネルスキャン実行
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "📡 チャンネルスキャンを実行中..."
