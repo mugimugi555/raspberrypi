@@ -8,21 +8,11 @@
 echo 'Defaults timestamp_timeout = 1200' | sudo EDITOR='tee -a' visudo ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# update repository
-#-----------------------------------------------------------------------------------------------------------------------
-#sudo cp /etc/apt/sources.list /etc/apt/sources.list.back ;
-#sudo sed -i "s/http:\/\/deb.debian.org\/debian $(lsb_release -sc) main/http:\/\/ftp.jaist.ac.jp\/raspbian $(lsb_release -sc) main/" /etc/apt/sources.list ;
-#sudo apt-key adv --keyserver http://keyserver.ubuntu.com --recv-keys 9165938D90FDDD2E ;
-
-#-----------------------------------------------------------------------------------------------------------------------
 # wall paper
 #-----------------------------------------------------------------------------------------------------------------------
 wget http://gahag.net/img/201602/11s/gahag-0055029460-1.jpg -O /home/$USER/Pictures/1.jpg ;
 pcmanfm -w /home/$USER/Pictures/1.jpg ;
-sudo mv /usr/share/rpd-wallpaper/temple.jpg /usr/share/rpd-wallpaper/temple_org.jpg ;
-sudo mv /usr/share/rpd-wallpaper/clouds.jpg /usr/share/rpd-wallpaper/clouds_org.jpg ;
-sudo cp /home/pi/Pictures/1.jpg /usr/share/rpd-wallpaper/temple.jpg ;
-sudo cp /home/pi/Pictures/1.jpg /usr/share/rpd-wallpaper/clouds.jpg ;
+feh --bg-scale /home/$USER/Pictures/1.jpg ;
 
 #-----------------------------------------------------------------------------------------------------------------------
 # config
@@ -70,17 +60,19 @@ sudo apt update ;
 sudo apt upgrade -y ;
 sudo apt install -y                       \
   emacs-nox htop curl git axel            \
-  samba net-tools exfat-fuse exfat-utils  \
+  samba net-tools exfat-fuse              \
   ffmpeg ibus-mozc imagemagick mpg321 vlc \
   lame unar lshw                          \
   mosquitto-clients ;
+sudo apt install -y exfat-utils ;
 sudo apt autoremove -y ;
 
 #-----------------------------------------------------------------------------------------------------------------------
-# youtube-dl
+# snapd
 #-----------------------------------------------------------------------------------------------------------------------
-sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl ;
-sudo chmod a+rx /usr/local/bin/youtube-dl ;
+sudo apt install -y snapd ;
+sudo snap install --classic gimp
+sudo snap install --edge yt-dlp
 
 #-----------------------------------------------------------------------------------------------------------------------
 # caps2ctrl
